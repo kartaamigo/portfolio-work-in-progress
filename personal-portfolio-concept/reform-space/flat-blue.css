@@ -89,3 +89,5 @@ a:not(.wordmark):not([data-section])::after{content:'↗';display:inline-block;m
 .life-points{align-items:start;gap:24px}.life-points h4{margin:0 0 12px}.life-points p{margin:0}
 .principle-grid h3{margin:0 0 14px;line-height:1.35}.principle-grid p{margin:0}
 @media(max-width:760px){.hero{min-height:440px}.hero p{font-size:12px;max-width:290px}.about-card p,.steps p,.life-points p,.note p{font-size:12px}.hero .button{font-size:12px}.about-card h3{font-size:17px}.steps h3{font-size:16px}.folder-stage{height:345px}.folder-tab{font-size:9px}.gallery-controls{gap:12px}}
+
+.app-shell,.world-caption{max-width:1600px}

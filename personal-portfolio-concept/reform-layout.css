@@ -42,6 +42,6 @@ body[data-world=digital] .header-worlds .world-reset{border:1px solid #303540!im
 @media(max-width:800px){body[data-world=digital]>header{grid-template-columns:1fr auto;gap:10px}body[data-world=digital]>header>nav{display:none}body[data-world=digital] .header-worlds .world-reset{padding:9px 12px!important}}
 body[data-world=digital] button,body[data-world=digital] .header-worlds .world-reset{border-color:transparent!important;box-shadow:none}
 body[data-world=digital] .portfolio-content>:not(.reform-site){display:none!important}
-body[data-world=digital] .portfolio-content>.reform-site{display:block;padding:0;max-width:1510px;margin:0 auto;background:#101012;scroll-margin-top:90px}
+body[data-world=digital] .portfolio-content>.reform-site{display:block;padding:0;max-width:1600px;margin:0 auto;background:#101012;scroll-margin-top:90px}
 .reform-site iframe{display:block;width:100%;height:900px;border:0;background:#101012;overflow:hidden}
 @media(max-width:800px){body[data-world=digital] .portfolio-content>.reform-site{scroll-margin-top:75px}}
