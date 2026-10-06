@@ -1,0 +1,74 @@
+const hero = document.querySelector('.hero');
+const body = document.body;
+const caption = document.getElementById('hero-caption');
+const returnButton = document.querySelector('.world-center-return');
+const portfolio = document.querySelector('.portfolio-content');
+const names = { neutral: 'Два мира, один автор', art: 'SoulArt / KRTY', digital: 'RE: FORM' };
+const captions = {
+  neutral: 'Мария Матвеева. Графический дизайнер.<br>Включи SoulArt или Reform, чтобы начать.',
+  art: 'Айдентика. Постеры. Обложки.<br>Визуальные истории с характером.',
+  digital: 'Reform — один из моих проектов.<br>Пространство для собственных цифровых идей.'
+};
+let selectedWorld = 'neutral';
+function preview(world) {
+  body.dataset.preview = world;
+  caption.innerHTML = captions[world];
+  const digitalFrame = document.querySelector('.digital-frame');
+  digitalFrame.inert = world !== 'digital';
+  if (world !== 'digital') document.getElementById('reform-dialog').hidden = true;
+  window.dispatchEvent(new CustomEvent('world-preview', { detail: world }));
+}
+function choose(world) {
+  if (!Object.hasOwn(names, world)) return;
+  selectedWorld = world;
+  body.dataset.world = world;
+  portfolio.hidden = world === 'neutral';
+  preview(world);
+  document.querySelectorAll('[data-switch]').forEach(button => {
+    button.setAttribute('aria-pressed', String(button.dataset.switch === world));
+  });
+  returnButton.hidden = world === 'neutral';
+  document.getElementById('world-status').textContent = 'Выбрано направление: ' + names[world];
+  if (world === 'neutral') window.scrollTo({ top: 0, behavior: 'instant' });
+}
+document.querySelectorAll('[data-pick]').forEach(button => {
+  button.removeAttribute('data-pick');
+  button.tabIndex = -1;
+  button.disabled = true;
+});
+document.querySelectorAll('[data-switch]').forEach(button => {
+  button.addEventListener('click', () => {
+    choose(selectedWorld === button.dataset.switch ? 'neutral' : button.dataset.switch);
+    if (scrollY > hero.offsetTop) window.scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion:reduce)').matches ? 'instant' : 'smooth' });
+  });
+});
+document.querySelector('.world-reset').addEventListener('click', () => choose('neutral'));
+returnButton.addEventListener('click', () => choose('neutral'));
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') {
+    const previous = selectedWorld;
+    choose('neutral');
+    if (previous !== 'neutral') document.getElementById('world-slider').focus({ preventScroll: true });
+  }
+});
+document.querySelectorAll('header nav a,.hero .scroll-cue').forEach(link => {
+  link.addEventListener('click', event => {
+    const target = document.querySelector(link.getAttribute('href'));
+    if (!target) return;
+    event.preventDefault();
+    if (selectedWorld === 'neutral' || target.id === 'reform') choose(target.id === 'reform' ? 'digital' : 'art');
+    requestAnimationFrame(() => target.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion:reduce)').matches ? 'instant' : 'smooth', block: 'start' }));
+  });
+});
+hero.addEventListener('pointermove', event => {
+  if (body.dataset.preview !== 'digital' || event.pointerType === 'touch' || matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  const bounds = hero.getBoundingClientRect();
+  hero.style.setProperty('--motion-x', ((event.clientX - bounds.left) / bounds.width - .5) * 24 + 'px');
+  hero.style.setProperty('--motion-y', ((event.clientY - bounds.top) / bounds.height - .5) * 16 + 'px');
+});
+hero.addEventListener('pointerleave', () => {
+  hero.style.setProperty('--motion-x', '0px');
+  hero.style.setProperty('--motion-y', '0px');
+});
+document.querySelector('.hero .small-note').innerHTML = 'Ползунок влево — SoulArt.<br>Вправо — Reform.';
+choose('neutral');

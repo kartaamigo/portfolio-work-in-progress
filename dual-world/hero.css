@@ -1,0 +1,46 @@
+/* Three supplied artworks: no choice, left SoulArt, right RE: FORM. */
+.hero{min-height:710px;background:#101012;color:#fff;display:flex;flex-direction:column}
+.paper-scene,.digital-scene{display:none}
+.hero-artwork{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.artwork-track{position:absolute;inset:0;transform:translateX(0);transition:transform .85s cubic-bezier(.22,.68,.16,1);will-change:transform}
+.hero-artwork img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;background:#101012}
+.artwork-art{transform:translateX(-100%)}
+.digital-frame{position:absolute;inset:0;transform:translateX(100%);background:radial-gradient(ellipse at 50% 65%,#30101f,#101012 70%)}
+.hero-artwork .digital-bunny{background:transparent;transform:none;animation:none}
+.digital-parallax{position:absolute;inset:0;transform:translate(var(--motion-x,0px),var(--motion-y,0px));transition:transform .25s ease-out}
+.hero-artwork .artwork-digital{background:transparent;animation:digital-float 6s ease-in-out infinite;animation-play-state:paused}
+body[data-preview=digital] .artwork-digital{animation-play-state:running}
+.hero-artwork .digital-prop{background:transparent;animation:prop-float 5.8s ease-in-out infinite;animation-play-state:paused;--float-y:-9px;--float-r:2deg}
+.hero-artwork .prop-error{transform-origin:28% 15%;animation-duration:6.4s;--float-r:-2deg}
+.hero-artwork .prop-drop{transform-origin:43% 12%;animation-duration:4.8s;animation-delay:-1.5s;--float-y:-12px}
+.hero-artwork .prop-screen{transform-origin:58% 15%;animation-duration:5.6s;animation-delay:-2.8s}
+.hero-artwork .prop-plus{transform-origin:68% 9%;animation-duration:4.3s;animation-delay:-.8s;--float-r:7deg}
+.hero-artwork .prop-card{transform-origin:89% 22%;animation-duration:6s;animation-delay:-3s;--float-r:-3deg}
+body[data-preview=digital] .hero-artwork .digital-prop{animation-play-state:running}
+@keyframes prop-float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(var(--float-y)) rotate(var(--float-r))}}
+@keyframes digital-float{0%,100%{transform:translate(-4px,3px) rotate(-.6deg)}50%{transform:translate(4px,-14px) rotate(.6deg)}}
+body[data-preview=art] .artwork-track{transform:translateX(100%)}
+body[data-preview=digital] .artwork-track{transform:translateX(-100%)}
+.hero-artwork:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#101012db,transparent 38%,transparent 62%,#101012db);transition:background .65s}
+.hero .choices{flex:1;min-height:520px;align-items:center}
+.hero .choice{min-height:520px;padding:130px 4% 110px;color:#fff;text-shadow:0 2px 18px #0008}
+.hero .choice h1,.hero .choice h2{font-size:clamp(36px,4vw,64px)}
+.hero .choice p{font-size:12px}
+.hero .choice-index{letter-spacing:1px;font-size:8px}
+.hero .hero-top>span,.hero .hero-bottom,.hero .hero-bottom p,.hero .scroll-cue,.hero .small-note{color:#fff}
+.hero .hero-top>span:nth-child(2){background:#21151ed9}
+body[data-preview=neutral] .hero .hero-top>span:first-child{color:#fff}
+body[data-preview=digital] .hero .choice,body[data-preview=digital] .hero .hero-top>span,body[data-preview=digital] .hero .hero-bottom,body[data-preview=digital] .hero .hero-bottom p,body[data-preview=digital] .hero .scroll-cue,body[data-preview=digital] .hero .small-note{color:#fff}
+body[data-preview=digital] .hero .hero-top>span:nth-child(2){background:#21151ed9}
+.hero .choice:focus-visible{outline:2px solid #ff318c;outline-offset:-5px}
+.hero .choice{pointer-events:none;cursor:default}
+.hero .choice>span,.hero .choice>h1,.hero .choice>h2,.hero .choice>p{display:table;width:fit-content;max-width:100%;pointer-events:auto;cursor:pointer}
+.hero .choice-digital>span,.hero .choice-digital>h2,.hero .choice-digital>p{margin-left:auto}
+@media(min-width:1500px){.hero{min-height:850px}.hero .choices,.hero .choice{min-height:650px}}
+@media(max-width:800px){.hero{min-height:680px}.hero .choices,.hero .choice{min-height:540px}.hero .choice{padding:330px 5% 25px}.hero .choice h1,.hero .choice h2{font-size:38px;letter-spacing:-2px}.hero-artwork img{object-fit:cover;object-position:center 35%}.hero-artwork:after{background:linear-gradient(0deg,#101012f5,transparent 65%)}}
+@media(max-width:560px){.hero{min-height:640px}.hero .choices,.hero .choice{min-height:490px}.hero .choice{padding:300px 5% 24px}.hero .choice h1,.hero .choice h2{font-size:30px;letter-spacing:-1.5px}.hero .choice p{font-size:9px}.hero .choice-index{font-size:6px;letter-spacing:.5px}.hero-artwork img{object-fit:contain;object-position:center 45px}.hero .hero-bottom{padding-top:10px}.hero .hero-bottom p{font-size:9px}.hero .hero-top>span:nth-child(2){font-size:6px}}
+
+@media(prefers-reduced-motion:reduce){.artwork-track,.digital-parallax{transition:none}.hero-artwork .artwork-digital{animation:none}.digital-parallax{transform:none}body[data-preview] .artwork-track,body[data-preview] .hero-artwork:before{animation:none}}
+@media(max-width:800px){.digital-frame{background-position:center 35%}}
+@media(max-width:560px){.digital-frame{background-size:contain;background-position:center 45px}}
+@media(prefers-reduced-motion:reduce){.hero-artwork .digital-prop{animation:none!important}}

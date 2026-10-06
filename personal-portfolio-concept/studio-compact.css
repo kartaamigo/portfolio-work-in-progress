@@ -1,0 +1,17 @@
+body[data-studio=compact] .studio-center{width:min(43%,720px,62vh);max-width:720px;max-height:none;aspect-ratio:1;top:55%}
+body[data-studio=compact] .studio-screen{left:41.5%;top:24%;width:26%;height:23%;clip-path:polygon(0 0,100% 12%,100% 100%,0 91%)}
+body[data-studio=compact] .studio-hat{left:49%;top:7%;width:25%;height:20%}
+body[data-studio=compact] .studio-icon{inset:auto;width:9.2%;height:auto;object-fit:contain}
+body[data-studio=compact] .studio-ps{left:-1%;top:33%}
+body[data-studio=compact] .studio-ai{left:96%;top:23%}
+body[data-studio=compact] .studio-pr{left:95%;top:62%}
+body[data-studio=compact] .studio-greeting{left:32%;bottom:96%;width:280px;padding:14px}
+body[data-studio=compact] .studio-greeting p{font-size:11px;line-height:1.55;margin:8px 0}
+body[data-studio=compact] .studio-greeting p:first-of-type{font-size:14px}
+body[data-studio=compact] .studio-greeting small{font-size:9px}
+@media(max-width:800px){
+  body[data-studio=compact][data-world=neutral] .hero{min-height:1040px}
+  body[data-studio=compact] .studio-center{width:88%;max-height:none;top:41%}
+  body[data-studio=compact] .folder-choices{top:75%}
+  body[data-studio=compact] .studio-greeting{left:5%;bottom:98%;max-width:82vw}
+}

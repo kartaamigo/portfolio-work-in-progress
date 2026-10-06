@@ -1,0 +1,42 @@
+.art-card-heading,.art-stack-anchor,.art-section-word,.art-scroll-progress{display:none}
+body[data-world=art]>header{position:sticky;top:0;z-index:40;backdrop-filter:blur(16px);background:#101012f2!important}
+body[data-world=art] .portfolio-content .resume-title{position:relative;flex-wrap:wrap}
+body[data-world=art] .art-section-word{display:block;flex-basis:100%;font-family:ImpactLocal,'Arial Black',sans-serif;font-size:clamp(70px,9.5vw,185px);line-height:.95;letter-spacing:-.015em;color:transparent;-webkit-text-stroke:1.5px #242024;margin-top:15px}
+body[data-world=art] .portfolio-content .resume-about{padding-top:60px}
+body[data-world=art] .portfolio-content .resume-intro{margin-top:40px}
+body[data-world=art] .portfolio-content .portrait{transition:transform .2s linear;transform:translateY(var(--portrait-shift,0px)) rotate(-3deg)}
+body[data-world=art] .portfolio-content .section-title h2{font-family:ImpactLocal,'Arial Black',sans-serif;font-weight:400;font-size:clamp(70px,7.6vw,145px);letter-spacing:-1px;line-height:.95}
+body[data-world=art] .portfolio-content .section-title em{font:italic .64em Georgia,serif;letter-spacing:-2px}
+body[data-world=art] .portfolio-content .works{overflow:visible;padding-top:95px;padding-bottom:85px}
+body[data-world=art] .portfolio-content .work-layout{display:block;position:relative;padding-bottom:10vh;isolation:isolate}
+body[data-world=art] .art-stack-anchor{display:block;height:0;pointer-events:none}
+body[data-world=art] .portfolio-content .work{position:sticky;top:calc(var(--art-header-height,90px) + 20px + var(--card-index,0)*15px);z-index:calc(2 + var(--card-index,0));display:grid;grid-template-columns:1.5fr 1fr;gap:22px 35px;align-items:center;min-height:clamp(380px,57vh,660px);margin:0 0 clamp(105px,21vh,230px);padding:24px 28px 30px;border:1px solid #6c626c;border-radius:25px;background:#121214;box-shadow:0 -10px 35px #0003;transform-origin:center top;transform:scale(var(--stack-scale,1));filter:brightness(var(--stack-brightness,1));will-change:transform}
+body[data-world=art] .portfolio-content .work:last-of-type{margin-bottom:0}
+body[data-world=art] .portfolio-content .art-card-heading{display:flex;align-items:center;justify-content:space-between;grid-column:1/-1;width:100%;border-bottom:1px solid #4b454c;padding-bottom:14px;font:11px Consolas,monospace;letter-spacing:1px;color:#c2b8c0}
+body[data-world=art] .art-card-heading b{font-size:35px;font-family:ImpactLocal,sans-serif;font-weight:400;color:#efece4;margin-right:15px;vertical-align:middle}
+body[data-world=art] .art-card-heading .card-type{font-size:9px;border:1px solid #6b616b;border-radius:30px;padding:9px 15px}
+body[data-world=art] .portfolio-content .work-cover{height:clamp(265px,39vh,420px);width:100%;border-radius:15px}
+body[data-world=art] .portfolio-content .work-caption{padding:10px 0}
+body[data-world=art] .portfolio-content .work-caption h3{font-size:clamp(30px,3.2vw,57px);font-weight:800;letter-spacing:-1.5px;line-height:1.05;gap:20px}
+body[data-world=art] .portfolio-content .work-caption p{font-size:15px;line-height:1.7;margin:24px 0;color:#b4aeb4}
+body[data-world=art] .portfolio-content .work-caption .tiny{font-size:10px;line-height:1.8;letter-spacing:.5px}
+body[data-world=art] .portfolio-content .work-b{padding-top:24px}
+body[data-world=art] .portfolio-content .work-c{margin-top:0}
+body[data-world=art] .portfolio-content .work-aside{display:none}
+body[data-world=art] .portfolio-content .phone{top:30px;left:calc(50% - 95px);transform:rotate(10deg) scale(.8);transform-origin:center top}
+body[data-world=art] .portfolio-content .app-word{font-size:clamp(80px,8vw,135px);top:50px}
+body[data-world=art] .portfolio-content .site-window{top:75px;left:6%;width:82%}
+body[data-world=art] .portfolio-content .visual-cover img{left:0;top:-12%;width:110%;height:auto}
+body[data-world=art] .portfolio-content .visual-type{font-size:clamp(70px,7vw,130px);top:25px}
+body[data-world=art] .portfolio-content .create{background:#eae6dd;color:#17171a;padding-top:80px;padding-bottom:75px}
+body[data-world=art] .portfolio-content .create>.tiny{color:#7c6d74}
+body[data-world=art] .portfolio-content .discipline{border-color:#bbb0b6;padding-block:30px}
+body[data-world=art] .portfolio-content .discipline h3{color:#17171a;font-family:ImpactLocal,'Arial Black',sans-serif;font-size:clamp(33px,3.4vw,65px);letter-spacing:-.5px;font-weight:400}
+body[data-world=art] .portfolio-content .discipline p{color:#76686f}
+body[data-world=art] .art-reveal{opacity:.2;transform:translateY(25px);transition:opacity .75s ease,transform .85s cubic-bezier(.2,.75,.2,1);transition-delay:var(--reveal-delay,0ms)}
+body[data-world=art] .art-reveal.is-visible{opacity:1;transform:none}
+body[data-world=art] .art-scroll-progress{display:block;position:fixed;top:0;left:0;width:100%;height:3px;background:#ff0064;z-index:60;transform:scaleX(var(--art-page-progress,0));transform-origin:left;pointer-events:none}
+body[data-world=art] .world-center-return{z-index:45}
+@media(max-width:800px){body[data-world=art]>header{position:relative}body[data-world=art] .portfolio-content .resume-about{padding-top:45px}body[data-world=art] .art-section-word{font-size:75px;-webkit-text-stroke:1px #242024;margin-top:8px}body[data-world=art] .portfolio-content .section-title h2{font-size:65px}body[data-world=art] .portfolio-content .works{padding-top:60px;padding-bottom:50px}body[data-world=art] .portfolio-content .work-layout{padding-bottom:0}body[data-world=art] .portfolio-content .work{position:relative;top:auto;grid-template-columns:1fr;gap:15px;min-height:0;padding:18px 17px 24px;margin:0 0 28px;border-radius:20px;transform:none;filter:none;will-change:auto}body[data-world=art] .portfolio-content .work:last-of-type{margin-bottom:0}body[data-world=art] .portfolio-content .art-card-heading{font-size:8px;padding-bottom:11px}body[data-world=art] .art-card-heading b{font-size:30px;margin-right:7px}body[data-world=art] .art-card-heading .card-type{font-size:7px;padding:7px 10px}body[data-world=art] .portfolio-content .work-cover{height:265px;border-radius:10px}body[data-world=art] .portfolio-content .work-caption{padding:6px 0 0}body[data-world=art] .portfolio-content .work-caption h3{font-size:28px;letter-spacing:-1px}body[data-world=art] .portfolio-content .work-caption p{font-size:12px;margin:14px 0}body[data-world=art] .portfolio-content .work-caption .tiny{font-size:8px}body[data-world=art] .portfolio-content .work-b{padding-top:18px}body[data-world=art] .portfolio-content .site-window{top:69px;padding:14px;left:5%;width:84%}body[data-world=art] .portfolio-content .window-title{font-size:31px;margin-top:15px}body[data-world=art] .portfolio-content .phone{top:23px;transform:rotate(10deg) scale(.62)}body[data-world=art] .portfolio-content .app-word{font-size:77px;left:18px;top:42px}body[data-world=art] .portfolio-content .round-sticker{width:70px;height:70px;font-size:8px;right:13px;bottom:15px}body[data-world=art] .portfolio-content .visual-cover img{width:132%;left:-15%;top:15px}body[data-world=art] .portfolio-content .visual-type{font-size:61px;top:28px}body[data-world=art] .portfolio-content .create{padding-top:50px;padding-bottom:45px}body[data-world=art] .portfolio-content .discipline{padding:18px 0 41px}body[data-world=art] .portfolio-content .discipline h3{font-size:30px}body[data-world=art] .art-scroll-progress{height:2px}}
+@media(prefers-reduced-motion:reduce){body[data-world=art] .art-reveal{opacity:1;transform:none;transition:none}body[data-world=art] .portfolio-content .work{transform:none;filter:none;will-change:auto}body[data-world=art] .portfolio-content .portrait{transform:rotate(-3deg);transition:none}body[data-world=art] .art-scroll-progress{display:none}}
+@media print{.art-card-heading,.art-section-word{display:none!important}body[data-world=art] .portfolio-content .work{position:static;transform:none;filter:none;break-inside:avoid}body[data-world=art] .art-reveal{opacity:1;transform:none}}

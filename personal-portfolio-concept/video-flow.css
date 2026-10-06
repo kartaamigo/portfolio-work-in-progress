@@ -1,0 +1,128 @@
+body[data-world=art] .portfolio-content .resume-about {
+  background: #101012;
+  color: #efece4;
+  padding-top: 105px;
+  padding-bottom: 100px;
+}
+body[data-world=art] .portfolio-content .resume-title {
+  justify-content: center;
+  text-align: center;
+  gap: 18px;
+}
+body[data-world=art] .portfolio-content .resume-title .tiny { color: #aaa0ae; }
+body[data-world=art] .art-section-word {
+  font-size: clamp(90px, 12vw, 190px);
+  -webkit-text-stroke: 1.5px #a69baa;
+  margin-top: 22px;
+}
+body[data-world=art] .portfolio-content .resume-intro {
+  grid-template-columns: minmax(210px, .65fr) 1.35fr;
+  gap: 70px;
+  align-items: center;
+  max-width: 1100px;
+  margin: 75px auto 0;
+}
+body[data-world=art] .portfolio-content .portrait {
+  background: #27232c;
+  border-color: #5c5063;
+  box-shadow: 12px 14px 0 #9a367b35;
+}
+body[data-world=art] .portfolio-content .resume-intro-copy h2 {
+  color: #efece4;
+  font-size: clamp(50px, 5.4vw, 82px);
+}
+body[data-world=art] .portfolio-content .resume-intro-copy h3 { color: #efece4; }
+body[data-world=art] .portfolio-content .resume-intro-copy > p { color: #bcb2c0; }
+body[data-world=art] .portfolio-content .resume-intro-copy .tiny { color: #a69baa; }
+body[data-world=art] .portfolio-content .resume-actions > a {
+  color: #efece4;
+  border-color: #8e6c91;
+  border-radius: 30px;
+  border: 1px solid #8e6c91;
+  padding: 13px 17px;
+}
+body[data-world=art] .portfolio-content .resume-details {
+  border-color: #4d424f;
+  gap: 28px;
+  margin-top: 90px;
+}
+body[data-world=art] .portfolio-content .resume-block h4,
+body[data-world=art] .portfolio-content .resume-block h5 { color: #efece4; }
+body[data-world=art] .portfolio-content .resume-block p,
+body[data-world=art] .portfolio-content .resume-block li { color: #bcb2c0; }
+body[data-world=art] .portfolio-content .resume-block small { color: #b48ba8; }
+body[data-world=art] .portfolio-content .tool-set > span,
+body[data-world=art] .portfolio-content .languages > span { color: #efece4; border-color: #6d566f; }
+body[data-world=art] .portfolio-content .works .section-title {
+  text-align: center;
+  margin-bottom: 70px;
+}
+body[data-world=art] .portfolio-content .works .title-side {
+  position: static;
+  display: block;
+  margin-top: 23px;
+}
+body[data-world=art] .portfolio-content .work {
+  grid-template-columns: 1fr;
+  gap: 18px;
+  padding: 22px;
+  border-color: #716675;
+  min-height: 0;
+}
+body[data-world=art] .portfolio-content .work-cover { height: clamp(270px, 40vh, 470px); }
+body[data-world=art] .portfolio-content .work-caption {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  column-gap: 35px;
+}
+body[data-world=art] .portfolio-content .work-caption h3 {
+  grid-row: 1 / 3;
+  font-size: clamp(30px, 3vw, 48px);
+}
+body[data-world=art] .portfolio-content .work-caption p { margin: 0 0 8px; }
+body[data-world=art] .portfolio-content .create { border-radius: 28px 28px 0 0; }
+body[data-world=art] .portfolio-content .discipline > span {
+  font: 400 clamp(35px, 3.5vw, 60px)/1 ImpactLocal, sans-serif;
+  color: #17171a;
+}
+body[data-world=art] .portfolio-content .discipline {
+  grid-template-columns: 90px 1.1fr 1fr 45px;
+  padding-block: 34px;
+}
+body[data-world=art] .portfolio-content .contact {
+  background: #eae6dd;
+  color: #17171a;
+  border-radius: 28px 28px 0 0;
+  padding-top: 85px;
+}
+body[data-world=art] .portfolio-content .contact > .tiny,
+body[data-world=art] .portfolio-content .contact-bottom p,
+body[data-world=art] .portfolio-content .contact > small { color: #645660; }
+body[data-world=art] .portfolio-content .contact h2 { color: #17171a; font-size: clamp(65px, 8.5vw, 150px); }
+body[data-world=art] .portfolio-content .contact-links a {
+  color: #17171a;
+  border: 1px solid #96838e;
+  padding: 13px 19px;
+  border-radius: 30px;
+}
+@media (max-width: 800px) {
+  body[data-world=art] .portfolio-content .resume-about { padding-top: 65px; padding-bottom: 60px; }
+  body[data-world=art] .art-section-word { font-size: 20vw; }
+  body[data-world=art] .portfolio-content .resume-intro { grid-template-columns: 1fr; gap: 45px; margin-top: 45px; }
+  body[data-world=art] .portfolio-content .portrait { width: 70%; max-width: 300px; margin: 0 auto; }
+  body[data-world=art] .portfolio-content .resume-intro-copy h2 { font-size: 54px; }
+  body[data-world=art] .portfolio-content .resume-details { margin-top: 50px; }
+  body[data-world=art] .portfolio-content .work { padding: 17px; }
+  body[data-world=art] .portfolio-content .work-caption { grid-template-columns: 1fr; gap: 12px; }
+  body[data-world=art] .portfolio-content .work-caption h3 { grid-row: auto; }
+  body[data-world=art] .portfolio-content .work-caption p { margin: 0; }
+  body[data-world=art] .portfolio-content .work-cover { height: 265px; }
+  body[data-world=art] .portfolio-content .discipline { grid-template-columns: 40px 1fr 25px; padding: 22px 0 52px; }
+  body[data-world=art] .portfolio-content .discipline > span { font-size: 29px; }
+  body[data-world=art] .portfolio-content .discipline p { left: 40px; bottom: 16px; }
+  body[data-world=art] .portfolio-content .contact { padding-top: 60px; }
+  body[data-world=art] .portfolio-content .contact h2 { font-size: clamp(40px, 11.5vw, 85px); }
+  body[data-world=art] .portfolio-content .contact-links { flex-wrap: wrap; gap: 10px; }
+  body[data-world=art] .portfolio-content .contact-links a { font-size: 11px; padding: 10px 12px; }
+}

@@ -1,0 +1,2 @@
+const {chromium}=require('C:/Users/1/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
+(async()=>{const b=await chromium.launch({headless:true,executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',args:['--use-angle=swiftshader','--enable-unsafe-swiftshader']});const p=await b.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});await p.goto('http://127.0.0.1:8766');await p.waitForTimeout(1200);await p.screenshot({path:'preview-mobile.png'});await b.close()})()
