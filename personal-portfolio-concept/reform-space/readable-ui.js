@@ -11,7 +11,7 @@
   let node;
   while(node=walker.nextNode()){
    if(node.parentElement.closest('script,style'))continue;
-   const value=node.nodeValue.replace(symbols,'').trimEnd();
+   const value=node.nodeValue.replace(symbols,'');
    if(value!==node.nodeValue)node.nodeValue=value;
   }
  }
