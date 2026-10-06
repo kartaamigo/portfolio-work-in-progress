@@ -3,7 +3,7 @@
   section.className = 'reform-site';
   section.setAttribute('aria-label', 'Reform — портфолио Марии Матвеевой');
   const frame = document.createElement('iframe');
-  frame.src = 'reform-space/index.html?v=links-26';
+  frame.src = 'reform-space/index.html?v=no-shadow-34';
   frame.setAttribute('scrolling', 'no');
   frame.title = 'Reform: обо мне, проекты и контакты';
   section.append(frame);
