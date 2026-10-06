@@ -77,3 +77,44 @@ body[data-world=photography] .portfolio-content>.contact,body[data-world=photogr
 @media(max-width:480px){.photography-gallery{grid-template-columns:1fr}.photo-controls .photo-prev{left:5px}.photo-controls .photo-next{right:5px}.photography-gallery strong{font-size:14px}}
 @media(max-width:800px){body[data-world=neutral] .photography-entry .folder-photo{width:min(280px,90%)}}
 @media(prefers-reduced-motion:reduce){.studio-camera span,.photography-gallery img{transition:none}}
+/* Photography overview and album pages. */
+body[data-world=photography] .photography-world{background:#101012;padding-top:28px}
+.photo-navigation{color:#b9bac1}
+.photo-hero{min-height:640px;background:#101012;border-radius:0;overflow:hidden;scroll-margin-top:100px}
+.photo-mosaic{position:absolute;inset:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));grid-auto-rows:145px;gap:12px;align-content:start}
+.photo-mosaic button{position:relative;border:0;padding:0;border-radius:16px;overflow:hidden;background:#15161b;cursor:pointer;color:#fff;min-width:0}
+.photo-mosaic button:nth-child(7n+2){grid-column:span 2}
+.photo-mosaic img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(.64);transition:filter .3s ease}
+.photo-mosaic button>span{position:absolute;inset:auto 0 0;padding:20px 14px 14px;background:linear-gradient(transparent,#08090de8);font:600 13px/1.4 Arial,sans-serif;opacity:0;transition:opacity .2s}
+.photo-mosaic button b{display:block;font:11px/1.5 Arial,sans-serif;margin-top:5px;color:#d7d8df}
+.photo-mosaic button:hover img,.photo-mosaic button:focus-visible img{filter:brightness(1)}
+.photo-mosaic button:hover>span,.photo-mosaic button:focus-visible>span{opacity:1}
+.photo-hero::after{inset:55% 0 0;background:linear-gradient(transparent,#101012);pointer-events:none;z-index:1}
+.photo-hero-copy{position:absolute;left:50%;top:50%;width:max-content;max-width:90%;transform:translate(-50%,-50%);padding:24px 30px;text-align:center;pointer-events:none;z-index:2;border-radius:20px;background:#101012cc;backdrop-filter:blur(8px)}
+.portfolio-content .photo-hero h2{font:600 clamp(30px,4vw,60px)/1.1 Arial,sans-serif;letter-spacing:-1.5px;margin:15px 0}
+.portfolio-content .photo-hero p{font:15px/1.6 Arial,sans-serif;margin:0 auto 12px;color:#dedee4}
+.photo-hero-copy small{font:12px/1.6 Arial,sans-serif;color:#c0c1ca}
+.photo-hero-copy .tiny{color:#c0c1ca}
+.photo-categories{margin-top:32px}
+.photo-categories button{border:0;background:#15161b;color:#c9cad3}
+.photo-categories button[aria-pressed=true]{background:#30323c;color:#fff;border:0}
+.photography-gallery{display:block;margin-top:35px;scroll-margin-top:110px}
+.photography-gallery[hidden]{display:none!important}
+.photography-gallery .photo-overview-return{display:inline-block;width:auto;margin:0 0 24px;padding:12px 18px;border:0;border-radius:24px;background:#23252d;color:#eee;font:13px Arial,sans-serif}
+.portfolio-content .photo-albums-heading h3{font:600 clamp(28px,3.5vw,48px)/1.15 Arial,sans-serif;letter-spacing:-1px;color:#eee}
+.portfolio-content .photo-albums-heading p{color:#aeb0bc}
+.photo-album-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 30px}
+.photography-gallery .photo-album-tabs button{width:auto;margin:0;border:0;border-radius:24px;padding:10px 16px;background:#15161b;color:#b8bac5;font:12px Arial,sans-serif}
+.photography-gallery .photo-album-tabs button[aria-pressed=true]{background:#ececf0;color:#101012}
+.photo-masonry{columns:4;column-gap:18px}
+.photography-gallery .photo-masonry button{display:block;width:100%;padding:0;margin:0 0 18px;break-inside:avoid;border:0;border-radius:14px;overflow:hidden;background:#15161b}
+.photography-gallery .photo-masonry img{width:100%;height:auto;aspect-ratio:auto;display:block;object-fit:contain;filter:none;transition:filter .2s}
+.photo-masonry button:hover img{filter:brightness(1.08)}
+.photography-world button:focus-visible{outline:2px solid #eeedf0;outline-offset:4px}
+.photo-contact-section,.photo-footer{border-color:#282a32}
+.photography-intro p,.photo-contact-section p{color:#bfc0c8!important}
+.photography-contact{border:0;background:#23252d;color:#eee}
+@media(max-width:1100px){.photo-masonry{columns:3}.photo-mosaic{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:800px){.photo-hero{min-height:560px}.photo-mosaic{grid-auto-rows:120px;gap:8px}.photo-hero-copy{padding:20px;width:90%;top:46%}.portfolio-content .photo-hero h2{font-size:34px;margin-bottom:16px}.photo-masonry{columns:2;column-gap:12px}.photography-gallery .photo-masonry button{margin-bottom:12px}.photo-mosaic button>span{font-size:11px}.photo-hero-copy small{font-size:11px}.photo-album-tabs{gap:6px}.photography-gallery .photo-album-tabs button{padding:10px 12px}}
+@media(max-width:480px){.photo-mosaic{grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:110px}.photo-mosaic button:nth-child(7n+2){grid-column:span 1}.photo-mosaic button>span{display:none}.photo-hero-copy small{font-size:0}.photo-hero-copy small::after{content:'Нажми на снимок, чтобы открыть подборку.';font-size:11px}.photo-hero-copy{top:43%}.photo-masonry{column-gap:9px}.photography-gallery .photo-masonry button{margin-bottom:9px;border-radius:10px}}
+@media(prefers-reduced-motion:reduce){.photo-mosaic img,.photo-mosaic button>span,.photo-masonry img{transition:none}}

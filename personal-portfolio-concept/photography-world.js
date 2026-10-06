@@ -9,7 +9,8 @@
   section.querySelectorAll('.photo-navigation a,.photo-hero-copy a').forEach(link => {
     link.addEventListener('click', event => {
       event.preventDefault();
-      section.querySelector(link.getAttribute('href')).scrollIntoView({ block: 'start', behavior: matchMedia('(prefers-reduced-motion:reduce)').matches ? 'instant' : 'smooth' });
+      if (link.getAttribute('href') === '#photo-works') openAlbum(0);
+      else section.querySelector(link.getAttribute('href')).scrollIntoView({ block: 'start', behavior: matchMedia('(prefers-reduced-motion:reduce)').matches ? 'instant' : 'smooth' });
     });
   });
   section.querySelectorAll('[data-photo-category]').forEach(button => {
@@ -53,8 +54,47 @@
   ].map(album => ({ ...album, photos: photos.filter(photo => photo[2] === album.id) }));
   const gallery = document.createElement('div');
   gallery.className = 'photography-gallery';
-  gallery.innerHTML = '<div class="photo-albums-heading"><h3>Фотографии по темам</h3><p>Открой подборку — и листай кадры вбок.</p></div>' + albums.map((album, index) => `<button type="button" data-album="${index}" aria-label="Открыть подборку: ${album.name}, ${album.photos.length} фото"><img src="assets/photography/${album.cover}-thumb.webp" alt="${album.name}" loading="lazy"><span><strong>${album.name}</strong><small>${album.photos.length} фото</small><b aria-hidden="true">↗</b></span></button>`).join('');
+  gallery.hidden = true;
+  gallery.innerHTML = '<div class="photo-albums-heading"><button type="button" class="photo-overview-return">Все подборки</button><h3></h3><p></p></div><div class="photo-album-tabs" aria-label="Подборки"></div><div class="photo-masonry"></div>';
+  gallery.querySelector('.photo-album-tabs').innerHTML = albums.map((album,index) => `<button type="button" data-select-album="${index}">${album.name}</button>`).join('');
   section.querySelector('.photography-pending').replaceWith(gallery);
+  const hero = section.querySelector('.photo-hero');
+  hero.innerHTML = `<div class="photo-mosaic">${photos.map(([file,description,category]) => `<button type="button" data-preview-album="${albums.findIndex(album=>album.id===category)}" aria-label="Открыть подборку: ${albums.find(album=>album.id===category).name}"><img src="assets/photography/${file}-thumb.webp" alt="${description}" loading="lazy"><span>${albums.find(album=>album.id===category).name}<b>Смотреть подборку ↗</b></span></button>`).join('')}</div><div class="photo-hero-copy"><span class="tiny">#КАРТАВЫЙ ФОТОГРАФ</span><h2 tabindex="-1">Мария Матвеева</h2><p>Стрит-фотография, люди и события.</p><small>Наведи на снимок, чтобы открыть похожие фотографии.</small></div>`;
+  let hoverTimer;
+  let hoverEnabled = true;
+  function openAlbum(index) {
+    albumIndex = index;
+    const album = albums[index];
+    clearTimeout(hoverTimer);
+    hoverEnabled = false;
+    gallery.hidden = false;
+    section.querySelector('#photo-street').hidden = false;
+    section.querySelector('#photo-college').hidden = true;
+    section.querySelectorAll('[data-photo-category]').forEach(tab=>tab.setAttribute('aria-pressed',String(tab.dataset.photoCategory==='street')));
+    gallery.querySelector('h3').textContent = album.name;
+    gallery.querySelector('.photo-albums-heading p').textContent = `${album.photos.length} фото. Нажми на снимок, чтобы посмотреть его крупнее.`;
+    gallery.querySelectorAll('[data-select-album]').forEach(button=>button.setAttribute('aria-pressed',String(Number(button.dataset.selectAlbum)===index)));
+    gallery.querySelector('.photo-masonry').innerHTML = album.photos.map(([file,description],photo)=>`<button type="button" data-photo="${photo}" aria-label="Посмотреть: ${description}"><img src="assets/photography/${file}.webp" alt="${description}" loading="lazy"></button>`).join('');
+    gallery.scrollIntoView({block:'start',behavior:'instant'});
+  }
+  hero.querySelectorAll('[data-preview-album]').forEach(button=>{
+    button.addEventListener('pointerenter',event=>{
+      clearTimeout(hoverTimer);
+      if(event.pointerType==='mouse' && hoverEnabled && matchMedia('(hover:hover)').matches) hoverTimer=setTimeout(()=>openAlbum(Number(button.dataset.previewAlbum)),650);
+    });
+    button.addEventListener('pointerleave',()=>{clearTimeout(hoverTimer);hoverEnabled=true;});
+    button.addEventListener('click',()=>openAlbum(Number(button.dataset.previewAlbum)));
+  });
+  gallery.querySelector('.photo-overview-return').addEventListener('click',()=>{
+    gallery.hidden=true;
+    hoverEnabled=false;
+    hero.scrollIntoView({block:'start',behavior:'instant'});
+    hero.querySelector('[data-preview-album]').focus({preventScroll:true});
+  });
+  gallery.querySelector('.photo-album-tabs').addEventListener('click',event=>{
+    const button=event.target.closest('[data-select-album]');
+    if(button)openAlbum(Number(button.dataset.selectAlbum));
+  });
   const dialog = document.createElement('dialog');
   dialog.className = 'photography-lightbox';
   dialog.setAttribute('aria-label', 'Просмотр фотографий #Картавый');
@@ -79,10 +119,9 @@
     renderPhoto();
   }
   gallery.addEventListener('click', event => {
-    const button = event.target.closest('[data-album]');
+    const button = event.target.closest('[data-photo]');
     if (!button) return;
-    albumIndex = Number(button.dataset.album);
-    photoIndex = 0;
+    photoIndex = Number(button.dataset.photo);
     renderPhoto();
     dialog.showModal();
   });
