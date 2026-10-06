@@ -66,7 +66,7 @@
   section.querySelector('.photography-pending').replaceWith(gallery);
   const hero = section.querySelector('.photo-hero');
   hero.innerHTML = `<div class="photo-mosaic">${photos.map(([file,description,category],index) => `<button type="button" data-preview-album="${albums.findIndex(album=>album.id===category)}" aria-label="Открыть подборку: ${albums.find(album=>album.id===category).name}">${previewImage(file,description,index%7===1 ? '(max-width:480px) 33vw, (max-width:1100px) 50vw, 33vw' : '(max-width:480px) 33vw, (max-width:1100px) 25vw, 16vw')}<span>${albums.find(album=>album.id===category).name}<b>Смотреть подборку ↗</b></span></button>`).join('')}</div><div class="photo-hero-copy"><span class="tiny">#КАРТАВЫЙ ФОТОГРАФ</span><h2 tabindex="-1">Мария Матвеева</h2><p>Стрит-фотография, люди и события.</p><small>Нажми на снимок, чтобы открыть похожие фотографии.</small></div>`;
-  function openAlbum(index) {
+  function openAlbum(index, scroll = true) {
     albumIndex = index;
     const album = albums[index];
     gallery.hidden = false;
@@ -77,13 +77,13 @@
     gallery.querySelector('.photo-albums-heading p').textContent = `${album.photos.length} фото. Нажми на снимок, чтобы посмотреть его крупнее.`;
     gallery.querySelectorAll('[data-select-album]').forEach(button=>button.setAttribute('aria-pressed',String(Number(button.dataset.selectAlbum)===index)));
     gallery.querySelector('.photo-masonry').innerHTML = album.photos.map(([file,description],photo)=>`<button type="button" data-photo="${photo}" aria-label="Посмотреть: ${description}">${previewImage(file,description,'(max-width:800px) 45vw, (max-width:1100px) 30vw, 22vw')}</button>`).join('');
-    gallery.scrollIntoView({block:'start',behavior:'instant'});
+    if(scroll)gallery.scrollIntoView({block:'start',behavior:'instant'});
   }
   hero.querySelectorAll('[data-preview-album]').forEach(button=>{
     button.addEventListener('click',()=>openAlbum(Number(button.dataset.previewAlbum)));
   });
   gallery.querySelector('.photo-overview-return').addEventListener('click',()=>{
-    gallery.hidden=true;
+    openAlbum(0, false);
     hero.scrollIntoView({block:'start',behavior:'instant'});
     hero.querySelector('[data-preview-album]').focus({preventScroll:true});
   });
@@ -155,7 +155,7 @@
   }
   window.addEventListener('world-preview',event=>{
     if(event.detail!=='photography')return;
-    gallery.hidden=true;
+    openAlbum(0, false);
     requestAnimationFrame(()=>window.scrollTo({top:0,behavior:'instant'}));
   });
   const camera = document.createElement('button');

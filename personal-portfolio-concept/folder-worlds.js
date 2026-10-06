@@ -29,7 +29,7 @@
     trigger.setAttribute('aria-expanded', 'false');
     trigger.setAttribute('aria-controls', 'folder-details-' + world);
     trigger.setAttribute('aria-label', 'Показать работы ' + name);
-    trigger.innerHTML = `<span class="folder-back" aria-hidden="true"></span><span class="folder-cards" aria-hidden="true">${projects[world].map((project, cardIndex) => `<span class="folder-card" style="--card:${cardIndex}"><img src="${project.image}" alt=""><span>${project.name}</span></span>`).join('')}</span><span class="folder-front"><span class="folder-number">0${index + 1} / SELECTED WORK</span><span class="folder-name">${name}</span><span class="folder-mark" aria-hidden="true">↗</span><span class="folder-caption">${world === 'art' ? 'ГРАФИКА · АЙДЕНТИКА' : 'ЦИФРОВЫЕ ПРОЕКТЫ'}</span></span>`;
+    trigger.innerHTML = `<span class="folder-back" aria-hidden="true"></span><span class="folder-cards" aria-hidden="true">${projects[world].map((project, cardIndex) => `<span class="folder-card" style="--card:${cardIndex}"><img data-src="${project.image}" alt="" loading="lazy" decoding="async"><span>${project.name}</span></span>`).join('')}</span><span class="folder-front"><span class="folder-number">0${index + 1} / SELECTED WORK</span><span class="folder-name">${name}</span><span class="folder-mark" aria-hidden="true">↗</span><span class="folder-caption">${world === 'art' ? 'ГРАФИКА · АЙДЕНТИКА' : 'ЦИФРОВЫЕ ПРОЕКТЫ'}</span></span>`;
     const info = document.createElement('div');
     const action = document.createElement('span');
     action.className = 'folder-action';

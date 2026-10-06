@@ -1,14 +1,13 @@
 (() => {
+  const compact = document.body.dataset.studio === 'compact';
   const stage = document.createElement('div');
   stage.className = 'studio-center';
-  stage.innerHTML = `<img class="studio-base" src="assets/studio-center.png" alt="Моё творческое пространство: монитор с зайцем, графический планшет, скетчбук и музыкальные инструменты"><img class="studio-icon studio-ps" src="assets/studio-photoshop.png" alt="" aria-hidden="true"><img class="studio-icon studio-ai" src="assets/studio-illustrator.png" alt="" aria-hidden="true"><img class="studio-icon studio-pr" src="assets/studio-premiere.png" alt="" aria-hidden="true"><span class="studio-screen" aria-hidden="true"></span><button type="button" class="studio-hat" aria-label="Приветствие Марии — нажми на шапку" aria-expanded="false" aria-controls="studio-greeting"></button><div class="studio-greeting" id="studio-greeting" role="dialog" aria-label="Приветствие Марии" hidden><button type="button" class="studio-greeting-close" aria-label="Закрыть приветствие">×</button><span>МАРИЯ / ПРИВЕТ! ✳</span><p>Привет! Рада, что ты заглянул.</p><p>Здесь можно узнать меня как дизайнера и человека, который превращает идеи в реальные проекты.</p><small>Выбери SoulArt или Reform — и давай знакомиться.</small></div>`;
+  stage.innerHTML = `<img class="studio-base" src="${compact ? 'assets/studio-center-camera-720.webp' : 'assets/studio-center.png'}" srcset="${compact ? 'assets/studio-center-camera-720.webp 720w, assets/studio-center-camera-1440.webp 1440w' : ''}" sizes="(max-width:800px) 82vw, (min-width:1675px) 720px, 43vw" fetchpriority="high" decoding="async" alt="Моё творческое пространство: монитор с зайцем, графический планшет, скетчбук и музыкальные инструменты"><img class="studio-icon studio-ps" src="assets/studio-photoshop${compact ? '-trim' : ''}.png" alt="" aria-hidden="true"><img class="studio-icon studio-ai" src="assets/studio-illustrator${compact ? '-trim' : ''}.png" alt="" aria-hidden="true"><img class="studio-icon studio-pr" src="assets/studio-premiere${compact ? '-trim' : ''}.png" alt="" aria-hidden="true"><span class="studio-screen" aria-hidden="true"></span><button type="button" class="studio-hat" aria-label="Приветствие Марии — нажми на шапку" aria-expanded="false" aria-controls="studio-greeting"></button><div class="studio-greeting" id="studio-greeting" role="dialog" aria-label="Приветствие Марии" hidden><button type="button" class="studio-greeting-close" aria-label="Закрыть приветствие">×</button><span>МАРИЯ / ПРИВЕТ! ✳</span><p>Привет! Рада, что ты заглянул.</p><p>Здесь можно узнать меня как дизайнера и человека, который превращает идеи в реальные проекты.</p><small>Выбери SoulArt или Reform — и давай знакомиться.</small></div>`;
   document.querySelector('.hero').append(stage);
   if (document.body.dataset.studio === 'compact') {
-    stage.querySelector('.studio-base').src = 'assets/studio-center-camera.png';
+
     stage.querySelector('.studio-base').alt = 'Творческий стол Марии: монитор с зайцем, синяя шапка, наушники, гитара, скетчбук, графический планшет, геймпады и фотоаппарат Canon EOS';
-    for (const name of ['photoshop', 'illustrator', 'premiere']) {
-      stage.querySelector(`img[src="assets/studio-${name}.png"]`).src = `assets/studio-${name}-trim.png`;
-    }
+
   }
   const hat = stage.querySelector('.studio-hat');
   const greeting = stage.querySelector('.studio-greeting');

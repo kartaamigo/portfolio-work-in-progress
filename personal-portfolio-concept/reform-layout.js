@@ -3,7 +3,9 @@
   section.className = 'reform-site';
   section.setAttribute('aria-label', 'Reform — портфолио Марии Матвеевой');
   const frame = document.createElement('iframe');
-  frame.src = 'reform-space/index.html?v=folders-35';
+  function loadReform() {
+    if (!frame.getAttribute('src')) frame.src = 'reform-space/index.html?v=folders-35';
+  }
   frame.setAttribute('scrolling', 'no');
   frame.title = 'Reform: обо мне, проекты и контакты';
   section.append(frame);
@@ -38,12 +40,14 @@
   });
 
   function open(sectionName = 'home') {
+    loadReform();
     section.scrollIntoView({block:'start', behavior:'instant'});
     const navigate = () => frame.contentWindow.postMessage({type:'reform-navigate', section:sectionName}, location.origin);
-    if (frame.contentDocument?.readyState === 'complete') navigate();
+    if (frame.contentDocument?.readyState === 'complete' && frame.contentDocument.URL.includes('reform-space/')) navigate();
     else frame.addEventListener('load', navigate, {once:true});
   }
   window.addEventListener('world-preview', event => {
+    if (event.detail === 'digital') loadReform();
     if (event.detail === document.body.dataset.world) requestAnimationFrame(() => window.scrollTo({top:0,behavior:'instant'}));
   });
   document.querySelectorAll('header nav a').forEach(link => {
