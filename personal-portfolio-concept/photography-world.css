@@ -78,7 +78,7 @@ body[data-world=photography] .portfolio-content>.contact,body[data-world=photogr
 @media(max-width:800px){body[data-world=neutral] .photography-entry .folder-photo{width:min(280px,90%)}}
 @media(prefers-reduced-motion:reduce){.studio-camera span,.photography-gallery img{transition:none}}
 /* Photography overview and album pages. */
-.photography-world>.photo-about{margin-top:10px;margin-bottom:45px;max-width:none}
+.photography-world>.photo-about{margin-top:45px;margin-bottom:45px;max-width:none}
 body[data-world=photography] .photography-world{background:#101012;padding-top:28px}
 .photo-navigation{color:#b9bac1}
 .photo-hero{min-height:640px;background:#101012;border-radius:0;overflow:hidden;scroll-margin-top:100px}
