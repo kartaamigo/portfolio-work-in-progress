@@ -45,6 +45,10 @@ dialog{position:fixed;top:var(--view-top,0px);bottom:auto;margin:18px auto;max-h
 .story-pair article>span{color:#c3d0ff}
 .github-projects-link{display:flex;align-items:center;justify-content:center;gap:14px;width:fit-content;margin:25px auto 0;padding:12px 20px;border:1px solid #3c4658;border-radius:24px;background:#232731;color:#f2f4fa;font-size:12px}
 .github-projects-link:hover{background:#011eba;border-color:#6c87ff}
+.selected-project #open-project{display:flex;justify-content:center;width:fit-content;margin-inline:auto;padding-inline:22px;gap:0;text-align:center}
+.selected-project #open-project>span{display:none}
+.github-projects-link{position:relative;text-align:center;padding-inline:40px;gap:0}
+.github-projects-link::after{position:absolute;right:16px;margin-left:0!important}
 .focus-card,.note{background:#0d121c}
 button,.button,.github-projects-link{border-color:transparent!important}
 /* Keep the orbit and internal dividers; remove outlines around surfaces. */
