@@ -71,5 +71,6 @@
       requestAnimationFrame(() => open(destination || 'home'));
     }, true);
   });
-  if (new URLSearchParams(location.search).get('world') === 'digital') choose('digital');
+  history.scrollRestoration = 'manual';
+  window.scrollTo({top:0,behavior:'instant'});
 })();
