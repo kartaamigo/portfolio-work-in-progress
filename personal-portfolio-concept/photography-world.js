@@ -63,6 +63,7 @@
   hero.innerHTML = `<div class="photo-mosaic">${photos.map(([file,description,category]) => `<button type="button" data-preview-album="${albums.findIndex(album=>album.id===category)}" aria-label="Открыть подборку: ${albums.find(album=>album.id===category).name}"><img src="assets/photography/${file}-thumb.webp" alt="${description}" loading="lazy"><span>${albums.find(album=>album.id===category).name}<b>Смотреть подборку ↗</b></span></button>`).join('')}</div><div class="photo-hero-copy"><span class="tiny">#КАРТАВЫЙ ФОТОГРАФ</span><h2 tabindex="-1">Мария Матвеева</h2><p>Стрит-фотография, люди и события.</p><small>Наведи на снимок, чтобы открыть похожие фотографии.</small></div>`;
   let hoverTimer;
   let hoverEnabled = true;
+  let entryHoverBlocked = false;
   function openAlbum(index) {
     albumIndex = index;
     const album = albums[index];
@@ -81,7 +82,13 @@
   hero.querySelectorAll('[data-preview-album]').forEach(button=>{
     button.addEventListener('pointerenter',event=>{
       clearTimeout(hoverTimer);
-      if(event.pointerType==='mouse' && hoverEnabled && matchMedia('(hover:hover)').matches) hoverTimer=setTimeout(()=>openAlbum(Number(button.dataset.previewAlbum)),650);
+      if(event.pointerType==='mouse' && hoverEnabled && !entryHoverBlocked && matchMedia('(hover:hover)').matches) hoverTimer=setTimeout(()=>openAlbum(Number(button.dataset.previewAlbum)),650);
+    });
+    button.addEventListener('pointermove',event=>{
+      if(entryHoverBlocked && event.pointerType==='mouse' && (event.movementX || event.movementY)){
+        entryHoverBlocked=false;
+        if(hoverEnabled)hoverTimer=setTimeout(()=>openAlbum(Number(button.dataset.previewAlbum)),650);
+      }
     });
     button.addEventListener('pointerleave',()=>{clearTimeout(hoverTimer);hoverEnabled=true;});
     button.addEventListener('click',()=>openAlbum(Number(button.dataset.previewAlbum)));
@@ -154,8 +161,18 @@
   function openPhotography() {
     choose('photography');
     window.scrollTo({ top: 0, behavior: 'instant' });
-    section.querySelector('h2').focus({ preventScroll: true });
+    const heading=section.querySelector('#photo-about h3');
+    heading.tabIndex=-1;
+    heading.focus({ preventScroll: true });
   }
+  window.addEventListener('world-preview',event=>{
+    if(event.detail!=='photography')return;
+    clearTimeout(hoverTimer);
+    entryHoverBlocked=true;
+    hoverEnabled=true;
+    gallery.hidden=true;
+    requestAnimationFrame(()=>window.scrollTo({top:0,behavior:'instant'}));
+  });
   const camera = document.createElement('button');
   camera.type = 'button';
   camera.className = 'studio-camera';
