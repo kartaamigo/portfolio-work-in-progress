@@ -1,5 +1,6 @@
 /* Solid blue palette matching the revised desktop SVG. */
 :root{--blue:#0b33e8;--accent:#0b33e8}
+*,*::before,*::after{box-shadow:none!important;text-shadow:none!important}
 body{background:#101012}
 .world{background:#101012;padding:20px 16px 35px}
 .world:before{display:none}
