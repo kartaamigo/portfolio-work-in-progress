@@ -6,6 +6,8 @@ body[data-world=neutral] .studio-center:after{display:none}
 body[data-world=neutral][data-preview=neutral] .hero .background-manifesto{left:4%;right:4%;top:8%;font-size:clamp(64px,12vw,230px);color:#efece4;text-align:center}
 body[data-world=neutral][data-preview=neutral] .hero .background-manifesto:before,body[data-world=neutral][data-preview=neutral] .hero .background-manifesto:after{display:none!important}
 body[data-world=neutral] .hero .background-manifesto>span{display:none!important}
+body[data-world=neutral][data-preview=neutral] .hero .background-manifesto{top:4%;font-size:clamp(64px,10.5vw,200px);z-index:7}
+body[data-world=neutral][data-preview=neutral] .hero .background-manifesto>.portfolio-subtitle{display:block!important;color:#efece4;font-family:Manrope,Arial,sans-serif;font-size:clamp(16px,1.8vw,30px);font-weight:500;letter-spacing:0;line-height:1.3;margin-top:8px}
 .studio-greeting{background:#191b22;border-color:transparent;color:#eceef3;box-shadow:0 18px 50px #0008;backdrop-filter:none}
 .studio-greeting:after{background:#191b22;border-color:transparent}
 .studio-greeting>span,.studio-greeting small{color:#aab0bc}
