@@ -1,0 +1,39 @@
+body[data-world=neutral] .hero{background:radial-gradient(ellipse at 50% 58%,#39305a80,transparent 52%),radial-gradient(ellipse at 15% 72%,#7f234c28,transparent 38%),radial-gradient(ellipse at 89% 65%,#342c882c,transparent 38%),#111016!important}
+.studio-center{position:absolute;left:50%;top:51%;transform:translate(-50%,-50%);width:50%;max-width:1000px;aspect-ratio:16/9;z-index:6;pointer-events:none}
+.studio-center:after{content:'';position:absolute;left:18%;right:18%;bottom:0;height:5%;border-radius:50%;background:#7765c348;filter:blur(22px);z-index:-1}
+.studio-base,.studio-icon{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none}
+.studio-base{filter:drop-shadow(0 20px 28px #0006)}
+.studio-icon{animation:studio-float 6s ease-in-out infinite;will-change:transform}
+.studio-ai{animation-delay:-2s;animation-duration:7s}
+.studio-pr{animation-delay:-4s;animation-duration:8s}
+.studio-screen{position:absolute;left:45.6%;top:28.1%;width:15.1%;height:21%;clip-path:polygon(0 0,100% 12%,98% 100%,0 91%);background:linear-gradient(135deg,#a49aff16,#7288ff22);box-shadow:inset 0 0 22px #bdacff50;animation:studio-monitor 9s ease-in-out infinite;overflow:hidden;pointer-events:none}
+.studio-screen:after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 3px,#e2dbff14 4px,transparent 5px);opacity:.3;animation:studio-scan 12s linear infinite}
+.studio-hat{position:absolute;left:48.3%;top:10%;width:15.4%;height:20.3%;border:0;background:transparent;padding:0;cursor:help;pointer-events:auto;border-radius:45% 50% 25% 20%;transform:rotate(9deg)}
+.studio-hat:focus-visible{outline:2px solid #b69eff;outline-offset:4px}
+.studio-greeting{position:absolute;left:29%;bottom:91%;width:330px;max-width:70vw;background:linear-gradient(140deg,#31233ef5,#15141ff5);border:1px solid #a18bbc77;border-radius:18px;padding:23px;box-shadow:0 20px 65px #0008;backdrop-filter:blur(18px);color:#efece4;pointer-events:auto;z-index:9;text-align:left}
+.studio-greeting[hidden]{display:none}
+.studio-greeting{opacity:0;transform:translateY(12px) scale(calc(.97 * var(--greeting-fit,1)));transform-origin:60% 100%;transition:opacity .32s ease,transform .45s cubic-bezier(.22,1,.36,1);pointer-events:none}
+.studio-greeting.is-open{opacity:1;transform:translateY(0) scale(var(--greeting-fit,1));pointer-events:auto}
+.studio-greeting:after{content:'';position:absolute;bottom:-9px;left:60%;width:16px;height:16px;background:#201929;border-right:1px solid #a18bbc77;border-bottom:1px solid #a18bbc77;transform:rotate(45deg)}
+.studio-greeting>span{font:9px/1.5 Consolas,monospace;letter-spacing:1px;color:#cdaaff}
+.studio-greeting p{font:13px/1.65 Arial,sans-serif;margin:12px 0;color:#e5dced}
+.studio-greeting p:first-of-type{font-size:18px;font-weight:700}
+.studio-greeting small{font:10px/1.6 Arial,sans-serif;color:#b6a5c3}
+.studio-greeting-close{position:absolute;right:10px;top:8px;background:none;border:0;color:#c4aed3;font-size:23px;cursor:pointer;padding:0 5px}
+body:not([data-world=neutral]) .studio-center{display:none}
+body[data-world=neutral] .folder-item{width:23%;max-width:300px}
+@keyframes studio-float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-10px) rotate(1deg)}}
+@keyframes studio-monitor{0%,100%{opacity:.18}40%{opacity:.5}45%{opacity:.23}48%{opacity:.4}65%{opacity:.26}}
+@keyframes studio-scan{from{transform:translateY(-8px)}to{transform:translateY(8px)}}
+@media(max-width:800px){
+  body[data-world=neutral] .hero{min-height:930px}
+  .studio-center{width:94%;top:40%}
+  .folder-choices{top:70%}
+  body[data-world=neutral] .folder-item{width:calc(50% - 14px)}
+  .studio-greeting{left:8%;bottom:100%;width:280px;padding:18px}
+  .studio-greeting p{font-size:11px}
+  .studio-greeting p:first-of-type{font-size:16px}
+  .studio-greeting>span{font-size:8px}
+}
+@media(prefers-reduced-motion:reduce){.studio-icon,.studio-screen,.studio-screen:after{animation:none;will-change:auto}.studio-screen{opacity:.25}}
+@media(prefers-reduced-motion:reduce){.studio-greeting{transition:none;transform:scale(var(--greeting-fit,1))}}
