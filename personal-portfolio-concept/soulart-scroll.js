@@ -1,6 +1,16 @@
 (() => {
   const content = document.querySelector('.portfolio-content');
   if (!content) return;
+  // Remove decorative glyphs from SoulArt; link arrows are provided by CSS.
+  for (const area of [...content.children]) {
+    if (area.matches('.photography-world,.reform-site')) continue;
+    const walker = document.createTreeWalker(area, NodeFilter.SHOW_TEXT);
+    let node;
+    while ((node = walker.nextNode())) {
+      if (node.parentElement.closest('script,style')) continue;
+      node.nodeValue = node.nodeValue.replace(/[↗↘↙↖↑↓←→↔✳✧◈◎]/g, '');
+    }
+  }
   const cards = [...content.querySelectorAll('.work-layout>.work')];
   const anchors = [];
   const types = ['САЙТ / КОНЦЕПТ', 'ПРИЛОЖЕНИЕ / КОНЦЕПТ', 'ВИЗУАЛЬНЫЙ ЭКСПЕРИМЕНТ'];

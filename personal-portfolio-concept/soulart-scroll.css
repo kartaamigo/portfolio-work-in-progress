@@ -47,3 +47,10 @@ body[data-world=art] .portfolio-content .ribbon-track{animation-play-state:runni
 .portfolio-content .ribbon-copy{display:block;flex-shrink:0;padding-inline:24px}
 @keyframes ribbon-left{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media(prefers-reduced-motion:reduce){.portfolio-content .ribbon-track{animation:none;will-change:auto}}
+
+body[data-world=art] .portfolio-content .hand-note{font-family:Arial,Helvetica,sans-serif;font-style:normal;font-size:20px;transform:none}
+body[data-world=art] .portfolio-content em,body[data-world=art] .portfolio-content i{font-family:inherit;font-style:normal}
+body[data-world=art] .portfolio-content .section-title em{font-family:inherit;font-style:normal;font-size:inherit;letter-spacing:inherit}
+body[data-world=art] .portfolio-content .resume-intro-copy h3 em{font-family:inherit;font-size:inherit;font-weight:inherit}
+body[data-world=art] .portfolio-content .about-x,body[data-world=art] .portfolio-content .cover-arrow,body[data-world=art] .portfolio-content .discipline>b,body[data-world=art] .portfolio-content .work-aside>span{display:none}
+body[data-world=art] .art-scroll-progress{transform:none;background:linear-gradient(to right,#ff0064 calc(var(--art-page-progress,0)*100%),#39363d 0)}
