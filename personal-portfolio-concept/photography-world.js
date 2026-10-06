@@ -60,15 +60,10 @@
   gallery.querySelector('.photo-album-tabs').innerHTML = albums.map((album,index) => `<button type="button" data-select-album="${index}">${album.name}</button>`).join('');
   section.querySelector('.photography-pending').replaceWith(gallery);
   const hero = section.querySelector('.photo-hero');
-  hero.innerHTML = `<div class="photo-mosaic">${photos.map(([file,description,category]) => `<button type="button" data-preview-album="${albums.findIndex(album=>album.id===category)}" aria-label="Открыть подборку: ${albums.find(album=>album.id===category).name}"><img src="assets/photography/${file}-thumb.webp" alt="${description}" loading="lazy"><span>${albums.find(album=>album.id===category).name}<b>Смотреть подборку ↗</b></span></button>`).join('')}</div><div class="photo-hero-copy"><span class="tiny">#КАРТАВЫЙ ФОТОГРАФ</span><h2 tabindex="-1">Мария Матвеева</h2><p>Стрит-фотография, люди и события.</p><small>Наведи на снимок, чтобы открыть похожие фотографии.</small></div>`;
-  let hoverTimer;
-  let hoverEnabled = true;
-  let entryHoverBlocked = false;
+  hero.innerHTML = `<div class="photo-mosaic">${photos.map(([file,description,category]) => `<button type="button" data-preview-album="${albums.findIndex(album=>album.id===category)}" aria-label="Открыть подборку: ${albums.find(album=>album.id===category).name}"><img src="assets/photography/${file}-thumb.webp" alt="${description}" loading="lazy"><span>${albums.find(album=>album.id===category).name}<b>Смотреть подборку ↗</b></span></button>`).join('')}</div><div class="photo-hero-copy"><span class="tiny">#КАРТАВЫЙ ФОТОГРАФ</span><h2 tabindex="-1">Мария Матвеева</h2><p>Стрит-фотография, люди и события.</p><small>Нажми на снимок, чтобы открыть похожие фотографии.</small></div>`;
   function openAlbum(index) {
     albumIndex = index;
     const album = albums[index];
-    clearTimeout(hoverTimer);
-    hoverEnabled = false;
     gallery.hidden = false;
     section.querySelector('#photo-street').hidden = false;
     section.querySelector('#photo-college').hidden = true;
@@ -80,22 +75,10 @@
     gallery.scrollIntoView({block:'start',behavior:'instant'});
   }
   hero.querySelectorAll('[data-preview-album]').forEach(button=>{
-    button.addEventListener('pointerenter',event=>{
-      clearTimeout(hoverTimer);
-      if(event.pointerType==='mouse' && hoverEnabled && !entryHoverBlocked && matchMedia('(hover:hover)').matches) hoverTimer=setTimeout(()=>openAlbum(Number(button.dataset.previewAlbum)),650);
-    });
-    button.addEventListener('pointermove',event=>{
-      if(entryHoverBlocked && event.pointerType==='mouse' && (event.movementX || event.movementY)){
-        entryHoverBlocked=false;
-        if(hoverEnabled)hoverTimer=setTimeout(()=>openAlbum(Number(button.dataset.previewAlbum)),650);
-      }
-    });
-    button.addEventListener('pointerleave',()=>{clearTimeout(hoverTimer);hoverEnabled=true;});
     button.addEventListener('click',()=>openAlbum(Number(button.dataset.previewAlbum)));
   });
   gallery.querySelector('.photo-overview-return').addEventListener('click',()=>{
     gallery.hidden=true;
-    hoverEnabled=false;
     hero.scrollIntoView({block:'start',behavior:'instant'});
     hero.querySelector('[data-preview-album]').focus({preventScroll:true});
   });
@@ -167,9 +150,6 @@
   }
   window.addEventListener('world-preview',event=>{
     if(event.detail!=='photography')return;
-    clearTimeout(hoverTimer);
-    entryHoverBlocked=true;
-    hoverEnabled=true;
     gallery.hidden=true;
     requestAnimationFrame(()=>window.scrollTo({top:0,behavior:'instant'}));
   });
