@@ -10,6 +10,13 @@ const captions = {
   digital: 'Reform - один из моих проектов.<br>Пространство для собственных цифровых идей.'
 };
 let selectedWorld = 'neutral';
+const sectionNames = { art: 'soulart', digital: 'reform', photography: 'photography' };
+function rememberSection(world) {
+  const url = new URL(location.href);
+  if (sectionNames[world]) url.searchParams.set('section', sectionNames[world]);
+  else url.searchParams.delete('section');
+  if (url.href !== location.href) history.replaceState(history.state, '', url);
+}
 function preview(world) {
   body.dataset.preview = world;
   caption.innerHTML = captions[world];
@@ -18,10 +25,11 @@ function preview(world) {
   if (world !== 'digital') document.getElementById('reform-dialog').hidden = true;
   window.dispatchEvent(new CustomEvent('world-preview', { detail: world }));
 }
-function choose(world) {
+function choose(world, remember = true) {
   if (!Object.hasOwn(names, world)) return;
   selectedWorld = world;
   body.dataset.world = world;
+  if (remember) rememberSection(world);
   portfolio.hidden = world === 'neutral';
   preview(world);
   document.querySelectorAll('[data-switch]').forEach(button => {
@@ -71,4 +79,10 @@ hero.addEventListener('pointerleave', () => {
   hero.style.setProperty('--motion-y', '0px');
 });
 document.querySelector('.hero .small-note').innerHTML = 'Ползунок влево - SoulArt.<br>Вправо - Reform.';
-choose('neutral');
+// Restore after the deferred scripts have created photography and Reform.
+choose('neutral', false);
+document.addEventListener('DOMContentLoaded', () => {
+  const section = new URL(location.href).searchParams.get('section');
+  const world = Object.keys(sectionNames).find(world => sectionNames[world] === section);
+  choose(world && Object.hasOwn(names, world) ? world : 'neutral');
+}, { once: true });
