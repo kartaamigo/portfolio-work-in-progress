@@ -59,9 +59,11 @@ body[data-world=art] .portfolio-content .resume-title>.tiny{width:100%;text-alig
 
 body[data-world=art] .portfolio-content .tool-set>img{display:block;width:40px;height:40px;object-fit:contain;flex-shrink:0}
 
-body[data-world=art] .portfolio-content .portrait.portrait-drawing{background:transparent;border:0;padding:0;box-shadow:none;transform:none;width:calc(100% + 32px);max-width:none;margin:0 -16px}
+body[data-world=art] .portfolio-content .portrait.portrait-drawing{background:transparent;border:0;padding:0;box-shadow:none;transform:none;width:calc(100% + 150px);max-width:none;margin:0 -30px 0 -120px}
 body[data-world=art] .portfolio-content .portrait.portrait-drawing img{display:block;width:100%;height:auto}
-@media(max-width:800px){body[data-world=art] .portfolio-content .portrait.portrait-drawing{width:100%;max-width:440px;margin:0 auto}}
+@media(max-width:800px){body[data-world=art] .portfolio-content .portrait.portrait-drawing{width:100%;max-width:none;margin:0 auto}}
 
 body[data-world=art] .portfolio-content .languages.language-scales{display:block;width:100%;max-width:440px}
 body[data-world=art] .portfolio-content .language-scales>img{display:block;width:100%;height:auto}
+
+@media(min-width:801px) and (max-width:1200px){body[data-world=art] .portfolio-content .portrait.portrait-drawing{width:calc(100% + 60px);margin:0 -28px 0 -32px}}
