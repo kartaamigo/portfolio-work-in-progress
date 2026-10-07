@@ -63,7 +63,7 @@ body[data-world=art] .portfolio-content .portrait.portrait-drawing{background:tr
 body[data-world=art] .portfolio-content .portrait.portrait-drawing img{display:block;width:100%;height:auto}
 @media(max-width:800px){body[data-world=art] .portfolio-content .portrait.portrait-drawing{width:100%;max-width:none;margin:0 auto}}
 
-body[data-world=art] .portfolio-content .languages.language-scales{display:block;width:100%;max-width:440px}
+body[data-world=art] .portfolio-content .languages.language-scales{display:block;width:85%;max-width:374px}
 body[data-world=art] .portfolio-content .language-scales>img{display:block;width:100%;height:auto}
 
 @media(min-width:801px) and (max-width:1200px){body[data-world=art] .portfolio-content .portrait.portrait-drawing{width:calc(100% + 60px);margin:0 -28px 0 -32px}}
