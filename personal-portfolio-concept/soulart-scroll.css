@@ -54,3 +54,5 @@ body[data-world=art] .portfolio-content .section-title em{font-family:inherit;fo
 body[data-world=art] .portfolio-content .resume-intro-copy h3 em{font-family:inherit;font-size:inherit;font-weight:inherit}
 body[data-world=art] .portfolio-content .about-x,body[data-world=art] .portfolio-content .cover-arrow,body[data-world=art] .portfolio-content .discipline>b,body[data-world=art] .portfolio-content .work-aside>span{display:none}
 body[data-world=art] .art-scroll-progress{transform:none;background:linear-gradient(to right,#ff0064 calc(var(--art-page-progress,0)*100%),#39363d 0)}
+body[data-world=art] .portfolio-content .resume-title{justify-content:center;text-align:center}
+body[data-world=art] .portfolio-content .resume-title>.tiny{width:100%;text-align:center}
