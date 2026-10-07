@@ -14,7 +14,7 @@
     status.dataset.state = 'pending';
     status.textContent = 'Отправка сообщения...';
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 20000);
+    const timeout = setTimeout(() => controller.abort(), 60000);
     try {
       const response = await fetch(form.action, {
         method: 'POST',
