@@ -91,3 +91,9 @@ body[data-world] .language-scales>img{display:block;width:100%;height:auto;posit
  body:not([data-world])>header>.back{grid-column:3;grid-row:1;justify-self:end;margin-right:82px}
  body:not([data-world])>header>.language-switch{grid-column:3;grid-row:1;justify-self:end;margin:0}
 }
+
+/* User logo beside the name in the main header. */
+body[data-world]>header>.wordmark,body:not([data-world])>header>.identity{position:relative;padding-left:60px;min-height:44px;display:flex;flex-direction:column;justify-content:center}
+body[data-world]>header>.wordmark::before,body:not([data-world])>header>.identity::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);width:50px;height:50px;background:url('../apple-touch-icon.png?v=logo-102') center/contain no-repeat}
+@media(max-width:800px){body[data-world]>header>.wordmark,body:not([data-world])>header>.identity{padding-left:42px;min-height:36px}body[data-world]>header>.wordmark::before,body:not([data-world])>header>.identity::before{width:34px;height:34px}}
+@media(max-width:380px){body[data-world]>header>.wordmark{font-size:14px;padding-left:37px}body[data-world]>header>.wordmark::before{width:30px;height:30px}}
