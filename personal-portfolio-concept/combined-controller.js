@@ -6,7 +6,7 @@ const portfolio = document.querySelector('.portfolio-content');
 const names = { neutral: 'Два мира, один автор', art: 'SoulArt / KRTY', digital: 'RE: FORM' };
 const captions = {
   neutral: 'Мария Матвеева. Графический дизайнер.<br>Включи SoulArt или Reform, чтобы начать.',
-  art: 'Айдентика. Постеры. Обложки.<br>Визуальные истории с характером.',
+  art: 'Айдентика. Постеры. Обложки.<br>Графический дизайн и иллюстрация.',
   digital: 'Reform - один из моих проектов.<br>Пространство для собственных цифровых идей.'
 };
 let selectedWorld = 'neutral';
