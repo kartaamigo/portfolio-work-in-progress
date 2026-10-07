@@ -94,10 +94,16 @@ body[data-world] .language-scales>img{display:block;width:100%;height:auto;posit
 
 /* User logo beside the name in the main header. */
 body[data-world]>header>.wordmark,body:not([data-world])>header>.identity{position:relative;padding-left:52px;min-height:44px;display:flex;flex-direction:column;justify-content:center}
-body[data-world]>header>.wordmark::before,body:not([data-world])>header>.identity::before{content:"";position:absolute;left:-5px;top:50%;transform:translateY(-50%);opacity:.82;filter:saturate(.8);width:44px;height:44px;background:url('../apple-touch-icon.png?v=logo-102') center/contain no-repeat}
+body[data-world]>header>.wordmark::before,body:not([data-world])>header>.identity::before{content:"";position:absolute;left:-5px;top:50%;transform:translateY(-50%);opacity:.82;filter:saturate(.8);width:44px;height:44px;background:var(--header-hat) center/contain no-repeat}
 @media(max-width:800px){body[data-world]>header>.wordmark,body:not([data-world])>header>.identity{padding-left:42px;min-height:36px}body[data-world]>header>.wordmark::before,body:not([data-world])>header>.identity::before{width:34px;height:34px}}
 @media(max-width:380px){body[data-world]>header>.wordmark{font-size:14px;padding-left:37px}body[data-world]>header>.wordmark::before{width:30px;height:30px}}
 
 /* Shift the complete name-and-logo block left. */
 body[data-world]>header>.wordmark,body:not([data-world])>header>.identity{transform:translateX(-24px)}
 @media(max-width:800px){body[data-world]>header>.wordmark,body:not([data-world])>header>.identity{transform:translateX(-6px)}}
+
+/* Header logo follows the selected portfolio section. */
+body{--header-hat:url('assets/header-hat-neutral-105.png')}
+body[data-world=art]{--header-hat:url('assets/header-hat-art-105.png')}
+body[data-world=digital]{--header-hat:url('assets/header-hat-digital-105.png')}
+body[data-world=photography]{--header-hat:url('assets/header-hat-photography-105.png')}
