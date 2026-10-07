@@ -11,6 +11,10 @@
       node.nodeValue = node.nodeValue.replace(/[↗↘↙↖↑↓←→↔✳✧◈◎]/g, '');
     }
   }
+  content.querySelector('[data-open-world]')?.addEventListener('click', event => {
+    event.preventDefault();
+    choose(event.currentTarget.dataset.openWorld);
+  });
   const cards = [...content.querySelectorAll('.work-layout>.work')];
   const anchors = [];
   const types = ['САЙТ / КОНЦЕПТ', 'ПРИЛОЖЕНИЕ / КОНЦЕПТ', 'ВИЗУАЛЬНЫЙ ЭКСПЕРИМЕНТ'];
@@ -29,7 +33,7 @@
     label.append(number, 'SELECTED WORK');
     const type = document.createElement('span');
     type.className = 'card-type';
-    type.textContent = types[index];
+    type.textContent = card.dataset.projectType || types[index];
     heading.append(label, type);
     card.prepend(heading);
   });
