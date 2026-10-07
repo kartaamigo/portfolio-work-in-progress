@@ -9,7 +9,7 @@
   hero.append(panel);
   const introductions = document.createElement('div');
   introductions.className = 'world-intros';
-  introductions.innerHTML = `<section class="world-intro world-intro-art" id="soulart-intro"><span>01 / ВИЗУАЛЬНЫЕ ИСТОРИИ</span><h2>SoulArt <small>/ KRTY</small></h2><p>Иллюстрация. Айдентика.<br>Дизайн, который чувствуется.</p></section><section class="world-intro world-intro-digital" id="reform-intro"><span>02</span><h2>RE: FORM <small>design · code · life</small></h2><p>Дизайн | Код | Удобство.<br>Идея, которая поможет.</p></section></div>`;
+  introductions.innerHTML = `<section class="world-intro world-intro-art" id="soulart-intro"><span>01</span><h2>SoulArt <small>/ KRTY</small></h2><p>Иллюстрация. Айдентика.<br>Дизайн, который чувствуется.</p></section><section class="world-intro world-intro-digital" id="reform-intro"><span>02</span><h2>RE: FORM <small>design · code · life</small></h2><p>Дизайн | Код | Удобство.<br>Идея, которая поможет.</p></section></div>`;
   panel.prepend(introductions);
   document.querySelector('.portfolio-content').id = 'portfolio-content';
   const slider = panel.querySelector('input');
