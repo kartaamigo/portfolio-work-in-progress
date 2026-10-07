@@ -7,7 +7,7 @@ const names = { neutral: 'Два мира, один автор', art: 'SoulArt /
 const captions = {
   neutral: 'Мария Матвеева. Графический дизайнер.<br>Включи SoulArt или Reform, чтобы начать.',
   art: 'Айдентика. Постеры. Обложки.<br>Визуальные истории с характером.',
-  digital: 'Reform — один из моих проектов.<br>Пространство для собственных цифровых идей.'
+  digital: 'Reform - один из моих проектов.<br>Пространство для собственных цифровых идей.'
 };
 let selectedWorld = 'neutral';
 function preview(world) {
@@ -70,5 +70,5 @@ hero.addEventListener('pointerleave', () => {
   hero.style.setProperty('--motion-x', '0px');
   hero.style.setProperty('--motion-y', '0px');
 });
-document.querySelector('.hero .small-note').innerHTML = 'Ползунок влево — SoulArt.<br>Вправо — Reform.';
+document.querySelector('.hero .small-note').innerHTML = 'Ползунок влево - SoulArt.<br>Вправо - Reform.';
 choose('neutral');

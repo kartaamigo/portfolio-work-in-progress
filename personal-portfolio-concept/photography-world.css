@@ -121,3 +121,11 @@ body[data-world=photography] .photography-world{background:#101012;padding-top:2
 @media(max-width:800px){.photo-hero{min-height:560px}.photo-mosaic{grid-auto-rows:120px;gap:8px}.photo-hero-copy{padding:20px;width:90%;top:46%}.portfolio-content .photo-hero h2{font-size:34px;margin-bottom:16px}.photo-masonry{columns:2;column-gap:12px}.photography-gallery .photo-masonry button{margin-bottom:12px}.photo-mosaic button>span{font-size:11px}.photo-hero-copy small{font-size:11px}.photo-album-tabs{gap:6px}.photography-gallery .photo-album-tabs button{padding:10px 12px}}
 @media(max-width:480px){.photo-mosaic{grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:110px}.photo-mosaic button:nth-child(7n+2){grid-column:span 1}.photo-mosaic button>span{display:none}.photo-hero-copy small{font-size:0}.photo-hero-copy small::after{content:'Нажми на снимок, чтобы открыть подборку.';font-size:11px}.photo-hero-copy{top:43%}.photo-masonry{column-gap:9px}.photography-gallery .photo-masonry button{margin-bottom:9px;border-radius:10px}}
 @media(prefers-reduced-motion:reduce){.photo-mosaic img,.photo-mosaic button>span,.photo-masonry img{transition:none}}
+
+.photography-world>.photo-about{grid-template-columns:190px minmax(0,700px);gap:48px;align-items:stretch}
+.photography-symbol-frame{position:relative;min-width:0;align-self:stretch}
+.photography-world .photography-symbol-frame .photography-symbol{position:absolute;inset:0;width:auto;height:100%;max-width:100%;object-fit:contain;object-position:left top;justify-self:start}
+.portfolio-content .photo-about>div:last-child>p:last-child{margin-bottom:0}
+body[data-world=photography] .photography-world a:hover,body[data-world=photography] .photography-world a:focus-visible,body[data-world=photography]>header a:hover,body[data-world=photography]>header a:focus-visible{color:#d6aa87}
+@media(max-width:800px){.photography-world>.photo-about{grid-template-columns:90px minmax(0,1fr);gap:22px}.photography-world .photography-symbol-frame .photography-symbol{position:static;width:90px;height:auto;max-width:100%}.photography-symbol-frame{align-self:start}}
+@media(max-width:480px){.photography-world>.photo-about{grid-template-columns:64px minmax(0,1fr);gap:18px}.photography-world .photography-symbol-frame .photography-symbol{width:64px}}

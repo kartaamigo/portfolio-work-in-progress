@@ -37,7 +37,7 @@
     action.innerHTML = 'Открыть папку <span>' + (world === 'art' ? '←' : '→') + '</span>';
     trigger.querySelector('.folder-mark').textContent = world === 'art' ? '↖' : '↗';
     trigger.querySelector('.folder-front').append(action);
-    trigger.setAttribute('aria-label', 'Открыть ' + name + ' — посмотреть работы');
+    trigger.setAttribute('aria-label', 'Открыть ' + name + ' - посмотреть работы');
     info.className = 'folder-info';
     info.id = 'folder-details-' + world;
     info.inert = true;
@@ -89,7 +89,7 @@
   selector.inert = true;
   selector.setAttribute('aria-hidden', 'true');
   document.querySelector('.world-reset').textContent = 'К папкам ↔';
-  document.querySelector('.hero .small-note').innerHTML = 'Наведи на папку.<br>На телефоне — нажми.';
+  document.querySelector('.hero .small-note').innerHTML = 'Наведи на папку.<br>На телефоне - нажми.';
   function updateCaption() {
     if (document.body.dataset.world === 'neutral') {
       document.getElementById('hero-caption').innerHTML = 'Матвеева Мария. Мультидисциплинарный дизайнер.<br>Открой папку SoulArt, Reform или же нажми на камеру, чтобы посмотреть работы.';

@@ -1,10 +1,10 @@
 (() => {
   const section = document.createElement('section');
   section.className = 'reform-site';
-  section.setAttribute('aria-label', 'Reform — портфолио Марии Матвеевой');
+  section.setAttribute('aria-label', 'Reform - портфолио Марии Матвеевой');
   const frame = document.createElement('iframe');
   function loadReform() {
-    if (!frame.getAttribute('src')) frame.src = 'reform-space/index.html?v=folders-35';
+    if (!frame.getAttribute('src')) frame.src = 'reform-space/index.html?v=portfolio-refresh-76';
   }
   frame.setAttribute('scrolling', 'no');
   frame.title = 'Reform: обо мне, проекты и контакты';

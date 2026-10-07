@@ -26,7 +26,7 @@
   ];
   const gallery = document.createElement('div');
   gallery.className = 'digital-projects';
-  gallery.innerHTML = projects.map((project, projectIndex) => `<article class="digital-project"><div class="digital-project-header"><span>0${projectIndex + 1} / ДИЗАЙН ИНТЕРФЕЙСА</span><h3>${project.name}</h3><p>${project.description}</p></div><div class="digital-project-screens">${project.screens.map((screen, screenIndex) => `<button type="button" data-project="${projectIndex}" data-screen="${screenIndex}" aria-label="Увеличить: ${project.name} — ${screen.label}"><img src="${screen.image}" alt="${project.name}: ${screen.label}" loading="lazy"><span>${screen.label}<b aria-hidden="true">↗</b></span></button>`).join('')}</div></article>`).join('');
+  gallery.innerHTML = projects.map((project, projectIndex) => `<article class="digital-project"><div class="digital-project-header"><span>0${projectIndex + 1} / ДИЗАЙН ИНТЕРФЕЙСА</span><h3>${project.name}</h3><p>${project.description}</p></div><div class="digital-project-screens">${project.screens.map((screen, screenIndex) => `<button type="button" data-project="${projectIndex}" data-screen="${screenIndex}" aria-label="Увеличить: ${project.name} - ${screen.label}"><img src="${screen.image}" alt="${project.name}: ${screen.label}" loading="lazy"><span>${screen.label}<b aria-hidden="true">↗</b></span></button>`).join('')}</div></article>`).join('');
   document.getElementById('projects').append(gallery);
   const drawer = document.createElement('div');
   drawer.className = 'reform-drawer';
@@ -39,7 +39,7 @@
     heading.tabIndex = -1;
     const info = document.createElement('div');
     info.className = 'reform-project-info';
-    info.innerHTML = `<span>АВТОРСКИЙ ПРОЕКТ / ДИЗАЙН ИНТЕРФЕЙСА</span><h4>Что внутри</h4><ul>${projects[index].features.map(feature => `<li>${feature}</li>`).join('')}</ul><p>Ниже — макеты проекта. Нажми на экран, чтобы рассмотреть его крупнее.</p><button type="button" class="reform-back">← К приложениям</button>`;
+    info.innerHTML = `<span>АВТОРСКИЙ ПРОЕКТ / ДИЗАЙН ИНТЕРФЕЙСА</span><h4>Что внутри</h4><ul>${projects[index].features.map(feature => `<li>${feature}</li>`).join('')}</ul><p>Ниже - макеты проекта. Нажми на экран, чтобы рассмотреть его крупнее.</p><button type="button" class="reform-back">← К приложениям</button>`;
     article.querySelector('.digital-project-header').after(info);
     info.querySelector('button').addEventListener('click', () => {
       article.hidden = true;

@@ -11,6 +11,12 @@
       node.nodeValue = node.nodeValue.replace(/[↗↘↙↖↑↓←→↔✳✧◈◎]/g, '');
     }
   }
+  // Every text link gets its arrow from CSS, including the other worlds.
+  for (const link of document.querySelectorAll('a:not(.wordmark)')) {
+    const texts = document.createTreeWalker(link, NodeFilter.SHOW_TEXT);
+    let text;
+    while ((text = texts.nextNode())) text.nodeValue = text.nodeValue.replace(/↗/g, '');
+  }
   content.querySelector('[data-open-world]')?.addEventListener('click', event => {
     event.preventDefault();
     choose(event.currentTarget.dataset.openWorld);
