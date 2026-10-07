@@ -23,13 +23,22 @@
         signal: controller.signal
       });
       const result = await response.json();
-      if (!response.ok || ![true, 'true'].includes(result.success)) throw new Error('Submission failed');
+      if (!response.ok || ![true, 'true'].includes(result.success)) {
+        const error = new Error('Submission failed');
+        error.activation = /activat|confirm.*email|verify.*email|check.*email/i.test(result.message || '');
+        throw error;
+      }
       status.dataset.state = 'success';
       status.textContent = 'Сообщение отправлено. Спасибо!';
       form.reset();
-    } catch {
+    } catch (error) {
       status.dataset.state = 'error';
-      status.textContent = 'Не удалось отправить сообщение. Попробуйте ещё раз или напишите через почту, Telegram или WhatsApp.';
+      status.textContent = error.activation
+        ? 'Приём сообщений ещё не активирован. Пока напишите мне через почту, Telegram или WhatsApp.'
+        : error.name === 'AbortError'
+          ? 'Сервис отправки не ответил вовремя. Статус отправки неизвестен. Вы можете написать через почту, Telegram или WhatsApp.'
+          : 'Не удалось подтвердить отправку. Вы можете написать через почту, Telegram или WhatsApp.';
+      console.error('Contact form submission failed:', error);
     } finally {
       clearTimeout(timeout);
       sending = false;
