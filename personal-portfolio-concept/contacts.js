@@ -8,6 +8,11 @@
     if (sending || !form.reportValidity()) return;
     const data = Object.fromEntries(new FormData(form));
     if (data._honey) return;
+    const senderName = data.name.trim().replace(/[\r\n]+/g, ' ');
+    const senderEmail = data.email.trim();
+    const messageId = `${Date.now().toString(36)}-${crypto.randomUUID().slice(0, 8)}`;
+    data._subject = `Сообщение с сайта: ${senderName} (${senderEmail}) [${messageId}]`;
+    data._replyto = senderEmail;
     sending = true;
     button.disabled = true;
     button.textContent = 'Отправляю...';
