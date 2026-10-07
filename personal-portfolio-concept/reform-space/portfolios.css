@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+@import url('../../shared-fonts/fonts.css');
 :is(.photography,.soulart){--accent:#e7ad79;--surface:#181719;--text:#f1eee7;margin:0;background:#101012;color:var(--text);font:14px 'Manrope',Arial,sans-serif}
 .soulart{--accent:#ff0068;--surface:#191317}
 :is(.photography,.soulart) *{box-sizing:border-box}
