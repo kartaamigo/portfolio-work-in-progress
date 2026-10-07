@@ -77,3 +77,17 @@ body[data-world] .language-scales>img{display:block;width:100%;height:auto;posit
 @media(max-width:480px){html[lang=en] .photo-hero-copy small::after{content:'Tap a photo to open the collection.'}}
 
 @media(max-width:800px){body[data-studio=compact][data-world=neutral] .hero{min-height:clamp(720px,185vw,820px)}body[data-studio=compact][data-world=neutral] .studio-center{top:39%}body[data-studio=compact][data-world=neutral] .folder-choices{top:74%}}
+
+/* Keep the main menu centred independently of the controls on either side. */
+@media(min-width:1101px){
+ body[data-world]>header{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)}
+ body[data-world]>header>.wordmark{grid-column:1;grid-row:1;justify-self:start}
+ body[data-world]>header>nav:not(.language-switch){grid-column:2;grid-row:1;justify-self:center}
+ body[data-world]>header>.header-worlds{grid-column:3;grid-row:1;justify-self:end;margin-right:82px}
+ body[data-world]>header>.language-switch{grid-column:3;grid-row:1;justify-self:end;margin:0}
+ body:not([data-world])>header{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:20px}
+ body:not([data-world])>header>.identity{grid-column:1;grid-row:1}
+ body:not([data-world])>header>.site-nav{grid-column:2;grid-row:1;justify-self:center}
+ body:not([data-world])>header>.back{grid-column:3;grid-row:1;justify-self:end;margin-right:82px}
+ body:not([data-world])>header>.language-switch{grid-column:3;grid-row:1;justify-self:end;margin:0}
+}

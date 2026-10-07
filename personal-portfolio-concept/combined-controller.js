@@ -15,7 +15,7 @@ function rememberSection(world) {
   const url = new URL(location.href);
   if (sectionNames[world]) url.searchParams.set('section', sectionNames[world]);
   else url.searchParams.delete('section');
-  if (url.href !== location.href) history.replaceState(history.state, '', url);
+  history.replaceState({...history.state, portfolioWorld: world}, '', url);
 }
 function preview(world) {
   body.dataset.preview = world;
@@ -81,10 +81,21 @@ hero.addEventListener('pointerleave', () => {
   hero.style.setProperty('--motion-y', '0px');
 });
 document.querySelector('.hero .small-note').innerHTML = 'Ползунок влево - SoulArt.<br>Вправо - Reform.';
-// Restore after the deferred scripts have created photography and Reform.
+// A fresh visit starts at home. Reloading restores this tab's selected world.
 choose('neutral', false);
 document.addEventListener('DOMContentLoaded', () => {
-  const section = new URL(location.href).searchParams.get('section');
+  const url = new URL(location.href);
+  const section = url.searchParams.get('section');
   const world = Object.keys(sectionNames).find(world => sectionNames[world] === section);
-  choose(world && Object.hasOwn(names, world) ? world : 'neutral');
+  const navigation = performance.getEntriesByType('navigation')[0]?.type;
+  let requested = false;
+  try {
+    const pending = JSON.parse(sessionStorage.getItem('portfolio-navigation') || 'null');
+    sessionStorage.removeItem('portfolio-navigation');
+    requested = pending?.pathname === url.pathname && pending?.section === section && Date.now() - pending.created < 30000;
+  } catch {}
+  const reloading = navigation === 'reload' && history.state?.portfolioWorld === world;
+  choose(world && Object.hasOwn(names, world) && (reloading || requested) ? world : 'neutral');
 }, { once: true });
+
+window.addEventListener('pageshow', event => { if (event.persisted) choose('neutral'); });

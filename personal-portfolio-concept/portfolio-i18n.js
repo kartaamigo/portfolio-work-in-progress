@@ -16,7 +16,14 @@
     result = result.replace(/(^|\s)О (?=[A-Z])/g, '$1About ');
     return result;
   }
-  window.portfolioI18n = { language, t };
+  function rememberNavigation(destination) {
+    const next = new URL(destination, location.href);
+    const section = next.searchParams.get('section');
+    if (next.origin === location.origin && section) {
+      try { sessionStorage.setItem('portfolio-navigation', JSON.stringify({pathname:next.pathname, section, created:Date.now()})); } catch {}
+    }
+  }
+  window.portfolioI18n = { language, t, rememberNavigation };
   const excluded = 'script,style,textarea,input,[contenteditable],.language-switch';
   function translate(root) {
     if (language !== 'en') return;
@@ -58,7 +65,7 @@
         link.hreflang = code;
         link.textContent = code.toUpperCase();
         if (code === language) link.setAttribute('aria-current', 'true');
-        link.addEventListener('click', () => { const current = new URL(location.href); current.searchParams.set('lang', code); link.href = current.href; try { localStorage.setItem('portfolio-language', code); } catch {} });
+        link.addEventListener('click', event => { const current = new URL(location.href); current.searchParams.set('lang', code); link.href = current.href; if (!event.ctrlKey && !event.metaKey && !event.shiftKey) rememberNavigation(current.href); try { localStorage.setItem('portfolio-language', code); } catch {} });
         switcher.append(link);
       }
       header.append(switcher);
@@ -90,6 +97,7 @@
     const value = link.getAttribute('href');
     const next = localDestination(value);
     if (next !== value) link.setAttribute('href', next);
+    if (next && !next.startsWith('#') && link.target !== '_blank' && !event.ctrlKey && !event.metaKey && !event.shiftKey) rememberNavigation(next);
   }, true);
   translate(document.body);
   document.title = t(document.title);
