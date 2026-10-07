@@ -70,3 +70,5 @@ body>header nav>a[data-header-world=photography]{--nav-hover:#d6aa87}
 body>header nav>a[data-header-contact]{--nav-hover:#a3a3ad}
 body[data-world]>header nav>a:is([data-header-world],[data-header-contact]):is(:hover,:focus-visible){color:var(--nav-hover)}
 body[data-world]>header nav>a:is([data-header-world],[data-header-contact]):is(:hover,:focus-visible)>span,body[data-world]>header nav>a:is([data-header-world],[data-header-contact]):is(:hover,:focus-visible)>small{color:inherit}
+
+.hero .hero-bottom .small-note{display:none!important}
