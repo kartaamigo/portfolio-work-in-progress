@@ -67,6 +67,6 @@ body[data-world=digital] .portfolio-content>.reform-site{display:block;padding:0
 body>header nav>a[data-header-world=art]{--nav-hover:#ff0064}
 body>header nav>a[data-header-world=digital]{--nav-hover:#0f31ce}
 body>header nav>a[data-header-world=photography]{--nav-hover:#d6aa87}
-body>header nav>a[data-header-contact]{--nav-hover:#d5d5db}
+body>header nav>a[data-header-contact]{--nav-hover:#a3a3ad}
 body[data-world]>header nav>a:is([data-header-world],[data-header-contact]):is(:hover,:focus-visible){color:var(--nav-hover)}
 body[data-world]>header nav>a:is([data-header-world],[data-header-contact]):is(:hover,:focus-visible)>span,body[data-world]>header nav>a:is([data-header-world],[data-header-contact]):is(:hover,:focus-visible)>small{color:inherit}
