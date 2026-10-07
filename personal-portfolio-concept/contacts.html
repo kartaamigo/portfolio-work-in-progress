@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#101012">
+  <title>Контакты | Мария Матвеева</title>
+  <link rel="stylesheet" href="contacts.css?v=contacts-77">
+  <script src="contacts.js?v=contacts-77" defer></script>
+</head>
+<body>
+  <header><a class="identity" href="folders.html">МАТВЕЕВА МАРИЯ</a><a class="back" href="folders.html">На главную</a></header>
+  <main>
+    <div class="intro"><p class="eyebrow">КОНТАКТЫ</p><h1>Напишите мне.</h1><p>Обсудим проект, съёмку или ваш вопрос.</p></div>
+    <div class="contact-grid">
+      <section class="contact-methods" aria-label="Способы связи">
+        <a href="https://t.me/designeramigo" target="_blank" rel="noopener noreferrer"><span><strong>Telegram</strong><small>@designeramigo</small></span><span class="arrow" aria-hidden="true">↗</span></a>
+        <a href="mailto:xghostxsoulx@gmail.com"><span><strong>Почта</strong><small>xghostxsoulx@gmail.com</small></span><span class="arrow" aria-hidden="true">↗</span></a>
+        <a href="https://wa.me/79775243501" target="_blank" rel="noopener noreferrer"><span><strong>WhatsApp</strong><small>Открыть чат</small></span><span class="arrow" aria-hidden="true">↗</span></a>
+        <a href="https://www.behance.net/tuumiyurmirazh" target="_blank" rel="noopener noreferrer"><span><strong>Behance</strong><small>Посмотреть работы</small></span><span class="arrow" aria-hidden="true">↗</span></a>
+      </section>
+      <section class="message-section" aria-labelledby="message-heading">
+        <h2 id="message-heading">Сообщение на сайте</h2>
+        <p>Оставьте свою почту, чтобы я могла ответить.</p>
+        <form id="contact-form" action="https://formsubmit.co/ajax/xghostxsoulx@gmail.com" method="post">
+          <label for="contact-name">Имя</label>
+          <input id="contact-name" name="name" autocomplete="name" maxlength="100" required>
+          <label for="contact-email">Ваша почта</label>
+          <input id="contact-email" name="email" type="email" autocomplete="email" maxlength="254" required>
+          <label for="contact-message">Сообщение</label>
+          <textarea id="contact-message" name="message" rows="6" maxlength="5000" required></textarea>
+          <input type="hidden" name="_subject" value="Сообщение с сайта Марии Матвеевой">
+          <input type="hidden" name="_template" value="table">
+          <input class="honeypot" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button type="submit">Отправить сообщение</button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite" aria-atomic="true"></p>
+          <noscript><p>Для формы включите JavaScript или напишите через почту, Telegram или WhatsApp.</p></noscript>
+        </form>
+      </section>
+    </div>
+  </main>
+  <footer>© 2026 Мария Матвеева</footer>
+</body>
+</html>

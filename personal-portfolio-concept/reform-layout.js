@@ -4,7 +4,7 @@
   section.setAttribute('aria-label', 'Reform - портфолио Марии Матвеевой');
   const frame = document.createElement('iframe');
   function loadReform() {
-    if (!frame.getAttribute('src')) frame.src = 'reform-space/index.html?v=portfolio-refresh-76';
+    if (!frame.getAttribute('src')) frame.src = 'reform-space/index.html?v=contacts-covers-78';
   }
   frame.setAttribute('scrolling', 'no');
   frame.title = 'Reform: обо мне, проекты и контакты';
@@ -52,6 +52,11 @@
   });
   document.querySelectorAll('header nav a').forEach(link => {
     link.addEventListener('click', event => {
+      if(link.hasAttribute('data-header-contact')){
+        event.preventDefault();event.stopImmediatePropagation();
+        location.href='contacts.html';
+        return;
+      }
       if(link.dataset.headerWorld || link.hasAttribute('data-header-contact')){
         event.preventDefault();event.stopImmediatePropagation();
         if(link.dataset.headerWorld){
