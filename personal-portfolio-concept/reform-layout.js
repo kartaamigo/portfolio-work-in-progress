@@ -4,7 +4,7 @@
   section.setAttribute('aria-label', 'Reform - портфолио Марии Матвеевой');
   const frame = document.createElement('iframe');
   function loadReform() {
-    if (!frame.getAttribute('src')) frame.src = 'reform-space/index.html?v=contacts-covers-78';
+    if (!frame.getAttribute('src')) frame.src = 'reform-space/index.html?v=bilingual-95&lang=' + (document.documentElement.lang || 'ru');
   }
   frame.setAttribute('scrolling', 'no');
   frame.title = 'Reform: обо мне, проекты и контакты';
@@ -22,7 +22,7 @@
 
   function syncViewport() {
     const bounds = frame.getBoundingClientRect();
-    frame.contentWindow?.postMessage({type:'reform-viewport',top:Math.max(0,90-bounds.top),height:Math.max(200,innerHeight-Math.max(90,bounds.top))},location.origin);
+    frame.contentWindow?.postMessage({type:'reform-viewport',top:Math.max(0,document.querySelector('body>header').getBoundingClientRect().height-bounds.top),height:Math.max(200,innerHeight-Math.max(document.querySelector('body>header').getBoundingClientRect().height,bounds.top))},location.origin);
   }
   window.addEventListener('scroll',syncViewport,{passive:true});
   window.addEventListener('resize',syncViewport);
@@ -34,7 +34,7 @@
       syncViewport();
     }
     if(event.data?.type==='reform-scroll' && Number.isFinite(event.data.top)) {
-      window.scrollTo({top:scrollY+frame.getBoundingClientRect().top+event.data.top-95,behavior:'instant'});
+      window.scrollTo({top:scrollY+frame.getBoundingClientRect().top+event.data.top-document.querySelector('body>header').getBoundingClientRect().height-12,behavior:'instant'});
       syncViewport();
     }
   });
@@ -54,7 +54,7 @@
     link.addEventListener('click', event => {
       if(link.hasAttribute('data-header-contact')){
         event.preventDefault();event.stopImmediatePropagation();
-        location.href='contacts.html';
+        location.href=link.href;
         return;
       }
       if(link.dataset.headerWorld || link.hasAttribute('data-header-contact')){

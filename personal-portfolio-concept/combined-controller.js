@@ -61,7 +61,9 @@ document.addEventListener('keydown', event => {
 });
 document.querySelectorAll('header nav a,.hero .scroll-cue').forEach(link => {
   link.addEventListener('click', event => {
-    const target = document.querySelector(link.getAttribute('href'));
+    const href = link.getAttribute('href');
+    if (!href?.startsWith('#')) return;
+    const target = document.querySelector(href);
     if (!target) return;
     event.preventDefault();
     if (selectedWorld === 'neutral' || target.id === 'reform') choose(target.id === 'reform' ? 'digital' : 'art');
