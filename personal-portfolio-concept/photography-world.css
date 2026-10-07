@@ -129,3 +129,7 @@ body[data-world=photography] .photography-world{background:#101012;padding-top:2
 body[data-world=photography] .photography-world a:hover,body[data-world=photography] .photography-world a:focus-visible,body[data-world=photography]>header a:hover,body[data-world=photography]>header a:focus-visible{color:#d6aa87}
 @media(max-width:800px){.photography-world>.photo-about{grid-template-columns:90px minmax(0,1fr);gap:22px}.photography-world .photography-symbol-frame .photography-symbol{position:static;width:90px;height:auto;max-width:100%}.photography-symbol-frame{align-self:start}}
 @media(max-width:480px){.photography-world>.photo-about{grid-template-columns:64px minmax(0,1fr);gap:18px}.photography-world .photography-symbol-frame .photography-symbol{width:64px}}
+
+/* Brown hat replaces the photographer profile-card symbol. */
+.photography-world .photography-symbol-frame{align-self:start}
+.photography-world .photography-symbol-frame .photography-symbol{position:static;inset:auto;width:190px;height:auto;max-width:100%;object-fit:contain;object-position:center}
