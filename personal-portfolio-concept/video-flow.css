@@ -126,3 +126,6 @@ body[data-world=art] .portfolio-content .contact-links a {
   body[data-world=art] .portfolio-content .contact-links { flex-wrap: wrap; gap: 10px; }
   body[data-world=art] .portfolio-content .contact-links a { font-size: 11px; padding: 10px 12px; }
 }
+
+body[data-world=art] .portfolio-content .resume-actions > a{font-size:12px;line-height:1.5}
+body[data-world=art] .portfolio-content .resume-actions{flex-wrap:wrap}
