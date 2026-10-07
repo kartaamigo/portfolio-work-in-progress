@@ -69,3 +69,6 @@ body[data-world=art] .portfolio-content .language-scales>img{display:block;width
 @media(min-width:801px) and (max-width:1200px){body[data-world=art] .portfolio-content .portrait.portrait-drawing{width:calc(100% + 60px);margin:0 -28px 0 -32px}}
 
 body[data-world=art] .portfolio-content .resume-block h4>span{font-size:18px;font-weight:700;line-height:1.2;margin-right:9px}
+
+body[data-world=art] .portfolio-content .reform .circle-link::after{font-size:60px;line-height:1;margin:0}
+@media(max-width:800px){body[data-world=art] .portfolio-content .reform .circle-link::after{font-size:40px}}
