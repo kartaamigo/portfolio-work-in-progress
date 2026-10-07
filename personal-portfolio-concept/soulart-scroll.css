@@ -56,3 +56,5 @@ body[data-world=art] .portfolio-content .about-x,body[data-world=art] .portfolio
 body[data-world=art] .art-scroll-progress{transform:none;background:linear-gradient(to right,#ff0064 calc(var(--art-page-progress,0)*100%),#39363d 0)}
 body[data-world=art] .portfolio-content .resume-title{justify-content:center;text-align:center}
 body[data-world=art] .portfolio-content .resume-title>.tiny{width:100%;text-align:center}
+
+body[data-world=art] .portfolio-content .tool-set>img{display:block;width:40px;height:40px;object-fit:contain;flex-shrink:0}
